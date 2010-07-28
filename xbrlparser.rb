@@ -20,6 +20,7 @@ class XmlElement
   
   # Retreives the URI associated with the xml:base attribute.
   # Documentation: http://www.w3.org/TR/xmlbase/
+  # Also: http://www.w3.org/TR/2009/REC-xmlbase-20090128/
   # The value of this attribute is interpreted as a Legacy Extended IRI (LEIRI) as
   #   defined in the W3C Note "Legacy extended IRIs for XML resource identification" [LEIRI].
   # In namespace-aware XML processors, the "xml" prefix is bound to the namespace name
@@ -51,19 +52,19 @@ class XmlElement
     end
   end
 
-  # construct the namespace prefix qualified tag name given the document's namespaces
-  def ptag(ns_uri, tag)
+  # construct the namespace-prefix-qualified name given the document's namespaces
+  def qname(ns_uri, name)
     prefix = prefix_for(ns_uri)
     raise "Namespace at URI=#{ns_uri} not referenced!" if prefix.nil?
     if prefix.empty?
-      "#{tag}"
+      "#{name}"
     else
-      "#{prefix}:#{tag}"
+      "#{prefix}:#{name}"
     end
   end
 end
 
-module Xbrl
+module XBRL
   # The contants defined below represent the namespace prefixes defined in Sec. 1.6 of the XBRL spec.
   # The names of the constants share the same name as the prefix in the XBRL specification, except that all the constants
   #   are prefixed with "NS_"
@@ -111,10 +112,10 @@ module Xbrl
     # The schema definition of the schemaRef element is "used to link to XBRL taxonomy schemas from XBRL instances".
     def schemaRef_elements
       unless @schemaRef_elements
-        xbrl_tag = ptag(NS_XBRLI, 'xbrl')
-        schemaRef_tag = ptag(NS_LINK, 'schemaRef')
+        xbrl_tag = qname(NS_XBRLI, 'xbrl')
+        schemaRef_tag = qname(NS_LINK, 'schemaRef')
         #@schemaRef_elements = @root.xpath("/#{xbrl_tag}/#{schemaRef_tag}")
-        @schemaRef_elements = @root.xpath("./#{schemaRef_tag}")
+        @schemaRef_elements = @root.xpath("./#{schemaRef_tag}")   # this works because . refers to the <xbrl> root tag
       end
       @schemaRef_elements
     end
@@ -128,8 +129,8 @@ module Xbrl
     #   taxonomy schema documents and from XBRL instances."
     def linkbaseRef_elements
       unless @linkbaseRef_elements
-        xbrl_tag = ptag(NS_XBRLI, 'xbrl')
-        linkbaseRef_tag = ptag(NS_LINK, 'linkbaseRef')
+        xbrl_tag = qname(NS_XBRLI, 'xbrl')
+        linkbaseRef_tag = qname(NS_LINK, 'linkbaseRef')
         @linkbaseRef_elements = @root.xpath("/#{xbrl_tag}/#{linkbaseRef_tag}")
       end
       @linkbaseRef_elements
@@ -141,8 +142,8 @@ module Xbrl
     # values used in footnote links in the XBRL instance.
     def roleRef_elements
       unless @roleRef_elements
-        xbrl_tag = ptag(NS_XBRLI, 'xbrl')
-        roleRef_tag = ptag(NS_LINK, 'roleRef')
+        xbrl_tag = qname(NS_XBRLI, 'xbrl')
+        roleRef_tag = qname(NS_LINK, 'roleRef')
         @roleRef_elements = @root.xpath("/#{xbrl_tag}/#{roleRef_tag}")
       end
       @roleRef_elements
@@ -154,8 +155,8 @@ module Xbrl
     # values used in footnote links in the XBRL instance.
     def arcroleRef_elements
       unless @arcroleRef_elements
-        xbrl_tag = ptag(NS_XBRLI, 'xbrl')
-        arcroleRef_tag = ptag(NS_LINK, 'arcroleRef')
+        xbrl_tag = qname(NS_XBRLI, 'xbrl')
+        arcroleRef_tag = qname(NS_LINK, 'arcroleRef')
         @arcroleRef_elements = @root.xpath("/#{xbrl_tag}/#{arcroleRef_tag}")
       end
       @arcroleRef_elements
@@ -184,8 +185,8 @@ module Xbrl
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.7
     def contexts
       unless @contexts
-        xbrl_tag = ptag(NS_XBRLI, 'xbrl')
-        context_tag = ptag(NS_XBRLI, 'context')
+        xbrl_tag = qname(NS_XBRLI, 'xbrl')
+        context_tag = qname(NS_XBRLI, 'context')
         @contexts = @root.xpath("/#{xbrl_tag}/#{context_tag}")
       end
       @contexts
@@ -194,8 +195,8 @@ module Xbrl
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.8
     def units
       unless @units
-        xbrl_tag = ptag(NS_XBRLI, 'xbrl')
-        unit_tag = ptag(NS_XBRLI, 'unit')
+        xbrl_tag = qname(NS_XBRLI, 'xbrl')
+        unit_tag = qname(NS_XBRLI, 'unit')
         @units = @root.xpath("/#{xbrl_tag}/#{unit_tag}")
       end
       @units
@@ -205,8 +206,8 @@ module Xbrl
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.11
     def footnoteLink_elements
       unless @footnoteLink_elements
-        xbrl_tag = ptag(NS_XBRLI, 'xbrl')
-        footnoteLink_tag = ptag(NS_LINK, 'footnoteLink')
+        xbrl_tag = qname(NS_XBRLI, 'xbrl')
+        footnoteLink_tag = qname(NS_LINK, 'footnoteLink')
         @footnoteLink_elements = @root.xpath("/#{xbrl_tag}/#{footnoteLink_tag}")
       end
       @footnoteLink_elements
@@ -227,7 +228,6 @@ module Xbrl
       @root.attribute_with_ns("href", NS_XLINK)
     end
     
-    
     def absolute_href
     end
   end
@@ -242,7 +242,7 @@ end
 def main
   f = ARGV[0]
   
-  instance = Xbrl::Instance.load(f)
+  instance = XBRL::Instance.load(f)
   pp instance.schemaRef_elements
   # instance.facts.each do |fact|
   #   puts fact
