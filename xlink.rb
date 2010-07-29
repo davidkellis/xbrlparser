@@ -1,7 +1,6 @@
 require 'nokogiri'
 require 'pp'
 
-
 # XLink spec: http://www.w3.org/TR/xlink/
 module XLink
   NS = "http://www.w3.org/1999/xlink"
@@ -10,44 +9,66 @@ module XLink
   # This represents any XLink element
   # Should be mixed into a class derived from XmlElement
   module XLinkElement
-    attr_accessor :xlink_type     # type MUST be defined in every type of link except simple; in simple links, either type or href MUST be specified
-    attr_accessor :xlink_href     # href MUST be defined in locator-type elements
-    attr_accessor :xlink_role
-    attr_accessor :xlink_arcrole
-    attr_accessor :xlink_title
-    attr_accessor :xlink_show
-    attr_accessor :xlink_actuate
-    attr_accessor :xlink_label
-    attr_accessor :xlink_from
-    attr_accessor :xlink_to
+    # XLink element type attribute: type
+    def xlink_type     # type MUST be defined in every type of link except simple; in simple links, either type or href MUST be specified
+      @xlink_type ||= get_xlink_attr('type')
+    end
     
-    def set_xlink_attr(attribute_name)
+    # locator attribute: href
+    def xlink_href     # href MUST be defined in locator-type elements
+      @xlink_href ||= get_xlink_attr('href')
+    end
+    
+    # semantic attributes: role, arcrole, title
+    def xlink_role      # this identifier MUST NOT be a relative [Legacy Extended IRI]
+      @xlink_role ||= get_xlink_attr('role')
+    end
+    def xlink_arcrole   # this identifier MUST NOT be a relative [Legacy Extended IRI]
+      @xlink_arcrole ||= get_xlink_attr('arcrole')
+    end
+    def xlink_title
+      @xlink_title ||= get_xlink_attr('title')
+    end
+    
+    # behavior attributes: show, actuate
+    def xlink_show
+      @xlink_show ||= get_xlink_attr('show')
+    end
+    def xlink_actuate
+      @xlink_actuate ||= get_xlink_attr('actuate')
+    end
+    
+    # traversal attributes: label, from, to
+    def xlink_label
+      @xlink_label ||= get_xlink_attr('label')
+    end
+    def xlink_from
+      @xlink_from ||= get_xlink_attr('from')
+    end
+    def xlink_to
+      @xlink_to ||= get_xlink_attr('to')
+    end
+    
+    def get_xlink_attr(attribute_name)
       attr_name = qname(NS, attribute_name)
       attribute = @root.xpath("@#{attr_name}").first    # this should return a Nokogiri::XML::Attr object if the attribute exists
-      instance_variable_set("@xlink_#{attribute_name}", attribute.value) if attribute
+      #instance_variable_set("@xlink_#{attribute_name}", attribute.value) if attribute
+      attribute.value if attribute
     end
   end
   
   # defines local resources
   class Resource < XmlElement
     include XLinkElement
-
-    def initialize(root_node)
-      super
-      
-      set_xlink_attr('type')
-    end
   end
   
   # defines remote resources
   class Locator < XmlElement
     include XLinkElement
-    
-    def initialize(root_node)
-      super
-      
-      set_xlink_attr('type')
-      set_xlink_attr('href')
+
+    def xlink_href
+      href = super
+      resolve_href_uri(base, href)
     end
 
     def titles
@@ -69,13 +90,6 @@ module XLink
   # defines traversal rules
   class Arc < XmlElement
     include XLinkElement
-    
-    def initialize(root_node)
-      super
-      
-      set_xlink_attr('type')
-      set_xlink_attr('arcrole')
-    end
 
     def titles
       unless @titles
@@ -99,51 +113,27 @@ module XLink
   
   class Title < XmlElement
     include XLinkElement
-
-    def initialize(root_node)
-      super
-      
-      set_xlink_attr('type')
-    end
   end
 
   class Link < XmlElement
     include XLinkElement
-    
-    def initialize(root_node)
-      super
-      
-      set_xlink_attr('type')
-    end
   end
   
   class ExtendedLink < Link
     def resources
-      unless @resources
-        @resources = resource_type_elements.to_a.map {|r| Resource.new(r) }
-      end
-      @resources
+      @resources ||= resource_type_elements.to_a.map {|n| Resource.new(n, self) }
     end
     
     def locators
-      unless @locators
-        @locators = locator_type_elements.to_a.map {|l| Locator.new(l) }
-      end
-      @locators
+      @locators ||= locator_type_elements.to_a.map {|n| Locator.new(n, self) }
     end
     
     def arcs
-      unless @arcs
-        @arcs = arc_type_elements.to_a.map {|a| Arc.new(a) }
-      end
-      @arcs
+      @arcs ||= arc_type_elements.to_a.map {|n| Arc.new(n, self) }
     end
 
     def titles
-      unless @titles
-        @titles = title_type_elements.to_a.map {|t| Title.new(t) }
-      end
-      @titles
+      @titles ||= title_type_elements.to_a.map {|n| Title.new(n, self) }
     end
 
     # returns a NodeSet
@@ -181,11 +171,9 @@ module XLink
   end
   
   class SimpleLink < Link
-    def initialize(root_node)
-      super
-      
-      set_xlink_attr('href')
-      set_xlink_attr('arcrole')
+    def xlink_href
+      href = super
+      resolve_href_uri(base, href)
     end
     
     def linkbase?
