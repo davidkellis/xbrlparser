@@ -15,6 +15,7 @@ module XLink
     end
     
     # locator attribute: href
+    # XLink 1.1 Section 5.4: The value of the href attribute is a [Legacy extended IRIs] (LEIRI).
     def xlink_href     # href MUST be defined in locator-type elements
       @xlink_href ||= get_xlink_attr('href')
     end

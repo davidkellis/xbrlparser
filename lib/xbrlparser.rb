@@ -1,9 +1,11 @@
 require 'nokogiri'
 require 'pp'
 require 'xlink'
+require 'leiri'
 
 NS_XML = 'http://www.w3.org/XML/1998/namespace'
 
+# Resolution is covered in Section 5 of http://www.ietf.org/rfc/rfc3986.txt
 def resolve_base_uri(parent_base_uri, child_base_uri)
 end
 
@@ -28,6 +30,11 @@ class XmlElement
     @parent = parent
   end
   
+  # Returns the Nokogiri::XML::Node that represents this element
+  def node
+    @root
+  end
+  
   # Retreives the URI associated with the xml:base attribute.
   # Documentation: http://www.w3.org/TR/xmlbase/
   # Also: http://www.w3.org/TR/2009/REC-xmlbase-20090128/
@@ -35,11 +42,15 @@ class XmlElement
   #   defined in the W3C Note "Legacy extended IRIs for XML resource identification" [LEIRI].
   # In namespace-aware XML processors, the "xml" prefix is bound to the namespace name
   #   http://www.w3.org/XML/1998/namespace as described in Namespaces in XML [XML Names].
-  def base
+  #
+  # Returns a LegacyExtendedIRI object
+  def base(document_uri = nil)
     @base ||= if parent
-                resolve_base_uri(parent.base, @root.attribute_with_ns("base", NS_XML))
+                relative_base_uri = @root.attribute_with_ns("base", NS_XML)
+                parent.base(document_uri).transform_relative_reference(relative_base_uri)
               else
-                @root.attribute_with_ns("base", NS_XML)
+                base_uri = @root.attribute_with_ns("base", NS_XML) || document_uri
+                LegacyExtendedIRI.new(base_uri)
               end
   end
   
