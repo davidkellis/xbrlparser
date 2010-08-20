@@ -1,16 +1,12 @@
 require 'nokogiri'
 require 'pp'
 require 'xlink'
+require 'xbrl_linkbase'
+require 'xbrl_xlink'
 require 'leiri'
 
 NS_XML = 'http://www.w3.org/XML/1998/namespace'
-
-# Resolution is covered in Section 5 of http://www.ietf.org/rfc/rfc3986.txt
-def resolve_base_uri(parent_base_uri, child_base_uri)
-end
-
-def resolve_href_uri(base_uri, href_uri)
-end
+NS_XSD = 'http://www.w3.org/2001/XMLSchema'
 
 # XmlElement is really a wrapper around Nokogiri::XML::Node
 class XmlElement
@@ -23,16 +19,22 @@ class XmlElement
   end
   
   attr_reader :parent
+  attr_reader :document_uri
   
   # root_node is a Nokogiri::XML::Node object
-  def initialize(root_node, parent = nil)
+  def initialize(root_node, parent = nil, document_uri = nil)
     @root = root_node
     @parent = parent
+    @document_uri = nil
   end
   
   # Returns the Nokogiri::XML::Node that represents this element
   def node
     @root
+  end
+  
+  def id
+    @id ||= get_qualified_attr(NS_XSD, 'id')
   end
   
   # Retreives the URI associated with the xml:base attribute.
@@ -49,7 +51,7 @@ class XmlElement
                 relative_base_uri = @root.attribute_with_ns("base", NS_XML)
                 parent.base(document_uri).transform_relative_reference(relative_base_uri)
               else
-                base_uri = @root.attribute_with_ns("base", NS_XML) || document_uri
+                base_uri = @root.attribute_with_ns("base", NS_XML) || @document_uri || document_uri
                 LegacyExtendedIRI.new(base_uri)
               end
   end
@@ -110,71 +112,6 @@ module XBRL
 
   class Taxonomy < XmlElement
     def dts
-    end
-  end
-
-  class Linkbase < XmlElement
-    class RoleRef < ::XBRL::XLink::SimpleLink
-      # xlink:type MUST be "simple"
-      # xlink:href is REQUIRED
-      # link:roleURI is REQUIRED
-      
-      def roleURI           # The roleURI attribute MUST occur on the roleRef element.
-        @roleURI ||= get_qualified_attr(NS_LINK, 'roleURI')
-      end
-    end
-    
-    class ArcroleRef < ::XBRL::XLink::SimpleLink
-      # xlink:type MUST be "simple"
-      # xlink:href is REQUIRED
-      # link:arcroleURI is REQUIRED
-      
-      def arcroleURI
-        @arcroleURI ||= get_qualified_attr(NS_LINK, 'arcroleURI')
-      end
-    end
-    
-    def dts
-    end
-    
-    def roleRefs
-      @roleRefs ||= roleRef_elements.to_a.map {|n| RoleRef.new(n, self) }
-    end
-
-    def arcroleRefs
-      @arcroleRefs ||= arcroleRef_elements.to_a.map {|n| ArcroleRef.new(n, self) }
-    end
-    
-    def documentation_elements
-      unless @documentation_elements
-        documentation_tag = qname(NS_LINK, 'documentation')
-        @documentation_elements = @root.xpath("./#{documentation_tag}")   # this works because . refers to the <linkbase> root tag
-      end
-      @documentation_elements
-    end
-    
-    def roleRef_elements
-      unless @roleRef_elements
-        roleRef_tag = qname(NS_LINK, 'roleRef')
-        @roleRef_elements = @root.xpath("./#{roleRef_tag}")
-      end
-      @roleRef_elements
-    end
-    
-    def arcroleRef_elements
-      unless @arcroleRef_elements
-        arcroleRef_tag = qname(NS_LINK, 'arcroleRef')
-        @arcroleRef_elements = @root.xpath("./#{arcroleRef_tag}")
-      end
-      @arcroleRef_elements
-    end
-    
-    def extended_type_elements
-      unless @extended_type_elements
-        attr_name = qname(NS_XLINK, 'type')
-        @extended_type_elements = @root.xpath("*[@#{attr_name}='extended']")
-      end
-      @extended_type_elements
     end
   end
 

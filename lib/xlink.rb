@@ -1,4 +1,5 @@
 require 'nokogiri'
+require 'leiri'
 require 'pp'
 
 # XLink spec: http://www.w3.org/TR/xlink/
@@ -53,7 +54,6 @@ module XLink
     def get_xlink_attr(attribute_name)
       attr_name = qname(NS, attribute_name)
       attribute = @root.xpath("@#{attr_name}").first    # this should return a Nokogiri::XML::Attr object if the attribute exists
-      #instance_variable_set("@xlink_#{attribute_name}", attribute.value) if attribute
       attribute.value if attribute
     end
   end
@@ -69,7 +69,7 @@ module XLink
 
     def xlink_href
       href = super
-      resolve_href_uri(base, href)
+      LegacyExtendedIRI.new(href).to_target(base)
     end
 
     def titles
@@ -79,9 +79,9 @@ module XLink
       @titles
     end
 
-    def title_type_elements
+    def title_type_elements(ns = NS)
       unless @title_type_elements
-        attr_name = qname(NS, 'type')
+        attr_name = qname(ns, 'type')
         @title_type_elements = @root.xpath("*[@#{attr_name}='title']")
       end
       @title_type_elements
@@ -108,7 +108,7 @@ module XLink
     end
     
     def linkbase?
-      @xlink_arcrole == LINKBASE_ARCROLE
+      xlink_arcrole == LINKBASE_ARCROLE
     end
   end
   
@@ -121,6 +121,8 @@ module XLink
   end
   
   class ExtendedLink < Link
+    # xlink:type MUST be "extended"
+    
     def resources
       @resources ||= resource_type_elements.to_a.map {|n| Resource.new(n, self) }
     end
@@ -138,60 +140,50 @@ module XLink
     end
 
     # returns a NodeSet
-    def resource_type_elements
+    def resource_type_elements(ns = NS)
       unless @resource_type_elements
-        attr_name = qname(NS, 'type')
+        attr_name = qname(ns, 'type')
         @resource_type_elements = @root.xpath("*[@#{attr_name}='resource']")
       end
       @resource_type_elements
     end
 
-    def locator_type_elements
+    def locator_type_elements(ns = NS)
       unless @locator_type_elements
-        attr_name = qname(NS, 'type')
+        attr_name = qname(ns, 'type')
         @locator_type_elements = @root.xpath("*[@#{attr_name}='locator']")
       end
       @locator_type_elements
     end
     
-    def arc_type_elements
+    def arc_type_elements(ns = NS)
       unless @arc_type_elements
-        attr_name = qname(NS, 'type')
+        attr_name = qname(ns, 'type')
         @arc_type_elements = @root.xpath("*[@#{attr_name}='arc']")
       end
       @arc_type_elements
     end
     
-    def title_type_elements
+    def title_type_elements(ns = NS)
       unless @title_type_elements
-        attr_name = qname(NS, 'type')
+        attr_name = qname(ns, 'type')
         @title_type_elements = @root.xpath("*[@#{attr_name}='title']")
       end
       @title_type_elements
     end
   end
   
+  # Either type or href (or both) must be specified in a simple link.
   class SimpleLink < Link
+    # xlink:type is optional, but if it is provided it MUST be "simple"
+    
     def xlink_href
       href = super
-      resolve_href_uri(base, href)
+      LegacyExtendedIRI.new(href).to_target(base)
     end
     
     def linkbase?
-      @xlink_arcrole == LINKBASE_ARCROLE
-    end
-  end
-end
-
-module XBRL
-  module XLink
-    class ExtendedLink < ::XLink::ExtendedLink
-    end
-    
-    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_3.5.1
-    class SimpleLink < ::XLink::SimpleLink
-      # xlink_type MUST be "simple"
-      # xlink_href is REQUIRED
+      xlink_arcrole == LINKBASE_ARCROLE
     end
   end
 end
