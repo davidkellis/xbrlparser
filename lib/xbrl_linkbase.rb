@@ -53,6 +53,22 @@ module XBRL
       end
     end
     
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.2
+    module SchemaRef
+      include ::XBRL::XLink::SimpleLink
+      # xlink:type is REQUIRED
+      # xlink:href is REQUIRED and must be a URI that points to an XML Schema.
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.3
+    module LinkbaseRef
+      include ::XBRL::XLink::SimpleLink
+      # xlink:type is REQUIRED
+      # xlink:href is REQUIRED and must be a URI that points to an XML Schema.
+      # xlink:arcrole is REQUIRED and MUST be 'http://www.w3.org/1999/xlink/properties/linkbase'
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.11
     module FootnoteLink
       include ::XBRL::XLink::ExtendedLink
     end

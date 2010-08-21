@@ -45,6 +45,32 @@ module XBRL
       linkbaseRef_elements
     end
     
+    def schemaRefs
+      schemaRef_elements.to_a.map {|n| n.extend ::XBRL::Linkbase::SchemaRef }
+    end
+    
+    def linkbaseRefs
+      linkbaseRef_elements.to_a.map {|n| n.extend ::XBRL::Linkbase::LinkbaseRef }
+    end
+    
+    def roleRefs
+      roleRef_elements.to_a.map {|n| n.extend ::XBRL::Linkbase::RoleRef }
+    end
+    
+    def arcroleRefs
+      arcroleRef_elements.to_a.map {|n| n.extend ::XBRL::Linkbase::ArcroleRef }
+    end
+    
+    def items
+    end
+    
+    def tuples
+    end
+    
+    def contexts
+      
+    end
+
     # schemaRef elements
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.2
     # Every XBRL instance MUST contain at least one schemaRef element. The schemaRef element is a simple link, as defined in
@@ -90,14 +116,9 @@ module XBRL
       xpath("./#{arcroleRef_tag}")
     end
     
-    def item_elements
-      arcroleRef_tag = qname(NS_LINK, 'arcroleRef')
-      xpath("./#{arcroleRef_tag}")
-    end
-  
-    # return items and tuples; items first, followed by tuples
-    def facts
-      items + tuples    # concatenate both arrays
+    # return item_elements and tuple_elements; items first, followed by tuples
+    def fact_elements
+      items.to_a + tuples.to_a    # concatenate both arrays
     end
   
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.6
@@ -107,57 +128,81 @@ module XBRL
     #   group originally based on item. XBRL taxonomies include taxonomy schemas that contain such element definitions.
     # item elements MUST NOT be descendants of other item elements. Structural relationships necessary in an XBRL
     #   instance MUST be captured only using tuples (see Section 4.9).
-    def items
+    def item_elements
+      tag = qname(NS_XBRLI, '')
+      xpath("./#{tag}")
     end
   
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.9
     # compound facts are expressed using tuples (and are referred to as tuples in this specification)
-    def tuples
+    def tuple_elements
+      tag = qname(NS_XBRLI, '')
+      xpath("./#{tag}")
     end
   
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.7
-    def contexts
-      context_tag = qname(NS_XBRLI, 'context')
-      xpath("./#{context_tag}")
+    def context_elements
+      tag = qname(NS_XBRLI, 'context')
+      xpath("./#{tag}")
     end
   
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.8
-    def units
-      unit_tag = qname(NS_XBRLI, 'unit')
-      xpath("./#{unit_tag}")
+    def unit_elements
+      tag = qname(NS_XBRLI, 'unit')
+      xpath("./#{tag}")
     end
   
     # footnoteLink elements
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.11
     def footnoteLink_elements
-      footnoteLink_tag = qname(NS_LINK, 'footnoteLink')
-      xpath("./#{footnoteLink_tag}")
+      tag = qname(NS_LINK, 'footnoteLink')
+      xpath("./#{tag}")
     end
   end
   
-  module SchemaRef
-    include XmlElement
-    
-    def type
-      attribute_with_ns("type", NS_XLINK)
-    end
-    
-    # 4.2.2 - The xlink:href attribute on schemaRef elements
-    # A schemaRef element MUST have an xlink:href attribute. The xlink:href attribute MUST be a URI.
-    # The URI MUST point to an XML Schema. If the URI reference is relative, its absolute version MUST be determined as
-    # specified in [XML Base] before use. For details on the allowable forms of XPointer [XPTR] syntax in the URI see
-    # section 3.5.4.
-    # Returns an LegacyExtendedIRI
-    def href
-      LegacyExtendedIRI.new(qattr(NS_XLINK, 'href')).to_target(base)
-    end
-  end
-
   module Item
     include XmlElement
   end
 
   module Tuple
     include XmlElement
+  end
+  
+  # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.7
+  module Context
+    include XmlElement
+    
+    # xbrli:entity is REQUIRED
+    # xbrli:period is REQUIRED
+    
+    def entity
+      tag = qname(NS_XBRLI, 'entity')
+      xpath("./#{tag}").first
+    end
+    
+    def period
+      tag = qname(NS_XBRLI, 'entity')
+      xpath("./#{tag}").first
+    end
+    
+    def scenarios
+      tag = qname(NS_XBRLI, 'entity')
+      xpath("./#{tag}").to_a
+    end
+  end
+  
+  # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.8
+  module Unit
+    include XmlElement
+    
+    def measures
+      tag = qname(NS_XBRLI, 'measure')
+      xpath("./#{tag}").to_a
+    end
+    
+    def divide
+      tag = qname(NS_XBRLI, 'divide')
+      xpath("./#{tag}").first
+    end
   end
 end
