@@ -17,6 +17,7 @@ spec = Gem::Specification.new do |s|
   s.has_rdoc = false
   
   s.add_runtime_dependency 'leiri'
+  s.add_runtime_dependency 'xpointer'
   s.add_runtime_dependency 'nokogiri'
 end
 

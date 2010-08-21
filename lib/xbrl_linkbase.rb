@@ -1,17 +1,24 @@
-require 'xbrlparser'
+require 'xml'
 require 'xlink'
 require 'xbrl_xlink'
+require 'xbrl'
 
 module XBRL
-  class Linkbase < XmlElement
-    class Documentation < XmlElement
+  module Linkbase
+    include XmlElement
+    
+    module Documentation
+      include XmlElement
+      
       # documentation MUST have string content
       def to_s
-        node.content
+        content
       end
     end
     
-    class RoleRef < ::XBRL::XLink::SimpleLink
+    module RoleRef
+      include ::XBRL::XLink::SimpleLink
+      
       # xlink:type MUST be "simple"
       # xlink:href is REQUIRED; it MUST be a URI and MUST point to a roleType element in a taxonomy schema document.
       # link:roleURI is REQUIRED
@@ -23,11 +30,13 @@ module XBRL
       # roleType element that the roleRef element is pointing to.  Within a linkbase or an XBRL 
       # instance there MUST NOT be more than one roleRef element with the same roleURI attribute value.
       def roleURI
-        @roleURI ||= get_qualified_attr(NS_LINK, 'roleURI')
+        qattr(NS_LINK, 'roleURI')
       end
     end
   
-    class ArcroleRef < ::XBRL::XLink::SimpleLink
+    module ArcroleRef
+      include ::XBRL::XLink::SimpleLink
+      
       # xlink:type MUST be "simple"
       # xlink:href is REQUIRED; it MUST be a URI and MUST point to an arcroleType element in a taxonomy schema document.
       # link:arcroleURI is REQUIRED
@@ -40,59 +49,51 @@ module XBRL
       # pointing to.  Within a linkbase or an XBRL instance there MUST NOT be more than one arcroleRef 
       # element with the same arcroleURI attribute value.
       def arcroleURI
-        @arcroleURI ||= get_qualified_attr(NS_LINK, 'arcroleURI')
+        qattr(NS_LINK, 'arcroleURI')
       end
+    end
+    
+    module FootnoteLink
+      include ::XBRL::XLink::ExtendedLink
     end
   
     def dts
     end
   
     def documentation
-      @documentation ||= documentation_elements.to_a.map {|n| Documentation.new(n, self) }
+      documentation_elements.to_a.map {|n| n.extend Documentation }
     end
   
     def roleRefs
-      @roleRefs ||= roleRef_elements.to_a.map {|n| RoleRef.new(n, self) }
+      roleRef_elements.to_a.map {|n| n.extend RoleRef }
     end
 
     def arcroleRefs
-      @arcroleRefs ||= arcroleRef_elements.to_a.map {|n| ArcroleRef.new(n, self) }
+      arcroleRef_elements.to_a.map {|n| n.extend ArcroleRef }
     end
     
     def extended_links
-      @extended_links ||= extended_type_elements.to_a.map {|n| XBRL::XLink::ExtendedLink.new(n, self) }
+      extended_type_elements.to_a.map {|n| n.extend(XBRL::XLink::ExtendedLink) }
     end
   
     def documentation_elements
-      unless @documentation_elements
-        documentation_tag = qname(NS_LINK, 'documentation')
-        @documentation_elements = @root.xpath("./#{documentation_tag}")   # this works because . refers to the <linkbase> root tag
-      end
-      @documentation_elements
+      documentation_tag = qname(NS_LINK, 'documentation')
+      xpath("./#{documentation_tag}")   # this works because . refers to the <linkbase> root tag
     end
   
     def roleRef_elements
-      unless @roleRef_elements
-        roleRef_tag = qname(NS_LINK, 'roleRef')
-        @roleRef_elements = @root.xpath("./#{roleRef_tag}")
-      end
-      @roleRef_elements
+      roleRef_tag = qname(NS_LINK, 'roleRef')
+      xpath("./#{roleRef_tag}")
     end
   
     def arcroleRef_elements
-      unless @arcroleRef_elements
-        arcroleRef_tag = qname(NS_LINK, 'arcroleRef')
-        @arcroleRef_elements = @root.xpath("./#{arcroleRef_tag}")
-      end
-      @arcroleRef_elements
+      arcroleRef_tag = qname(NS_LINK, 'arcroleRef')
+      xpath("./#{arcroleRef_tag}")
     end
   
     def extended_type_elements
-      unless @extended_type_elements
-        attr_name = qname(NS_XL, 'type')
-        @extended_type_elements = @root.xpath("*[@#{attr_name}='extended']")
-      end
-      @extended_type_elements
+      attr_name = qname(NS_XL, 'type')
+      xpath("*[@#{attr_name}='extended']")
     end
   end
 end

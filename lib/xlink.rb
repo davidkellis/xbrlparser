@@ -1,110 +1,92 @@
 require 'nokogiri'
+require 'xml'
 require 'leiri'
-require 'pp'
 
 # XLink spec: http://www.w3.org/TR/xlink/
 module XLink
-  NS = "http://www.w3.org/1999/xlink"
+  NS_XLINK = "http://www.w3.org/1999/xlink"
   LINKBASE_ARCROLE = "http://www.w3.org/1999/xlink/properties/linkbase"
   
   # This represents any XLink element
-  # Should be mixed into a class derived from XmlElement
   module XLinkElement
+    include XmlElement
+    
     # XLink element type attribute: type
     def xlink_type     # type MUST be defined in every type of link except simple; in simple links, either type or href MUST be specified
-      @xlink_type ||= get_xlink_attr('type')
+      qattr(NS_XLINK, 'type')
     end
     
     # locator attribute: href
     # XLink 1.1 Section 5.4: The value of the href attribute is a [Legacy extended IRIs] (LEIRI).
     def xlink_href     # href MUST be defined in locator-type elements
-      @xlink_href ||= get_xlink_attr('href')
+      qattr(NS_XLINK, 'href')
     end
     
     # semantic attributes: role, arcrole, title
     def xlink_role      # this identifier MUST NOT be a relative [Legacy Extended IRI]
-      @xlink_role ||= get_xlink_attr('role')
+      qattr(NS_XLINK, 'role')
     end
     def xlink_arcrole   # this identifier MUST NOT be a relative [Legacy Extended IRI]
-      @xlink_arcrole ||= get_xlink_attr('arcrole')
+      qattr(NS_XLINK, 'arcrole')
     end
     def xlink_title
-      @xlink_title ||= get_xlink_attr('title')
+      qattr(NS_XLINK, 'title')
     end
     
     # behavior attributes: show, actuate
     def xlink_show
-      @xlink_show ||= get_xlink_attr('show')
+      qattr(NS_XLINK, 'show')
     end
     def xlink_actuate
-      @xlink_actuate ||= get_xlink_attr('actuate')
+      qattr(NS_XLINK, 'actuate')
     end
     
     # traversal attributes: label, from, to
     def xlink_label
-      @xlink_label ||= get_xlink_attr('label')
+      qattr(NS_XLINK, 'label')
     end
     def xlink_from
-      @xlink_from ||= get_xlink_attr('from')
+      qattr(NS_XLINK, 'from')
     end
     def xlink_to
-      @xlink_to ||= get_xlink_attr('to')
-    end
-    
-    def get_xlink_attr(attribute_name)
-      attr_name = qname(NS, attribute_name)
-      attribute = @root.xpath("@#{attr_name}").first    # this should return a Nokogiri::XML::Attr object if the attribute exists
-      attribute.value if attribute
+      qattr(NS_XLINK, 'to')
     end
   end
   
   # defines local resources
-  class Resource < XmlElement
+  module Resource
     include XLinkElement
   end
   
   # defines remote resources
-  class Locator < XmlElement
+  module Locator
     include XLinkElement
 
     def xlink_href
-      href = super
-      LegacyExtendedIRI.new(href).to_target(base)
+      LegacyExtendedIRI.new(super).to_target(base)
     end
 
     def titles
-      unless @titles
-        @titles = title_type_elements.to_a.map {|t| Title.new(t) }
-      end
-      @titles
+      title_type_elements.to_a.map {|n| n.extend(Title) }
     end
 
-    def title_type_elements(ns = NS)
-      unless @title_type_elements
-        attr_name = qname(ns, 'type')
-        @title_type_elements = @root.xpath("*[@#{attr_name}='title']")
-      end
-      @title_type_elements
+    def title_type_elements(ns = NS_XLINK)
+      attr_name = qname(ns, 'type')
+      xpath("*[@#{attr_name}='title']")
     end
   end
   
   # defines traversal rules
-  class Arc < XmlElement
+  module Arc
     include XLinkElement
 
     def titles
-      unless @titles
-        @titles = title_type_elements.to_a.map {|t| Title.new(t) }
-      end
-      @titles
+      title_type_elements.to_a.map {|n| n.extend(Title) }
     end
 
-    def title_type_elements
-      unless @title_type_elements
-        attr_name = qname(NS, 'type')
-        @title_type_elements = @root.xpath("*[@#{attr_name}='title']")
-      end
-      @title_type_elements
+    def title_type_elements(ns = NS_XLINK)
+      attr_name = qname(ns, 'type')
+      xpath("*[@#{attr_name}='title']")
     end
     
     def linkbase?
@@ -112,74 +94,65 @@ module XLink
     end
   end
   
-  class Title < XmlElement
+  module Title
     include XLinkElement
   end
 
-  class Link < XmlElement
+  module Link
     include XLinkElement
   end
   
-  class ExtendedLink < Link
+  module ExtendedLink
+    include Link
+    
     # xlink:type MUST be "extended"
     
     def resources
-      @resources ||= resource_type_elements.to_a.map {|n| Resource.new(n, self) }
+      resource_type_elements.to_a.map {|n| n.extend Resource }
     end
     
     def locators
-      @locators ||= locator_type_elements.to_a.map {|n| Locator.new(n, self) }
+      locator_type_elements.to_a.map {|n| n.extend Locator }
     end
     
     def arcs
-      @arcs ||= arc_type_elements.to_a.map {|n| Arc.new(n, self) }
+      arc_type_elements.to_a.map {|n| n.extend Arc }
     end
 
     def titles
-      @titles ||= title_type_elements.to_a.map {|n| Title.new(n, self) }
+      title_type_elements.to_a.map {|n| n.extend Title }
     end
 
     # returns a NodeSet
-    def resource_type_elements(ns = NS)
-      unless @resource_type_elements
-        attr_name = qname(ns, 'type')
-        @resource_type_elements = @root.xpath("*[@#{attr_name}='resource']")
-      end
-      @resource_type_elements
+    def resource_type_elements(ns = NS_XLINK)
+      attr_name = qname(ns, 'type')
+      xpath("*[@#{attr_name}='resource']")
     end
 
-    def locator_type_elements(ns = NS)
-      unless @locator_type_elements
-        attr_name = qname(ns, 'type')
-        @locator_type_elements = @root.xpath("*[@#{attr_name}='locator']")
-      end
-      @locator_type_elements
+    def locator_type_elements(ns = NS_XLINK)
+      attr_name = qname(ns, 'type')
+      xpath("*[@#{attr_name}='locator']")
     end
     
-    def arc_type_elements(ns = NS)
-      unless @arc_type_elements
-        attr_name = qname(ns, 'type')
-        @arc_type_elements = @root.xpath("*[@#{attr_name}='arc']")
-      end
-      @arc_type_elements
+    def arc_type_elements(ns = NS_XLINK)
+      attr_name = qname(ns, 'type')
+      xpath("*[@#{attr_name}='arc']")
     end
     
-    def title_type_elements(ns = NS)
-      unless @title_type_elements
-        attr_name = qname(ns, 'type')
-        @title_type_elements = @root.xpath("*[@#{attr_name}='title']")
-      end
-      @title_type_elements
+    def title_type_elements(ns = NS_XLINK)
+      attr_name = qname(ns, 'type')
+      xpath("*[@#{attr_name}='title']")
     end
   end
   
   # Either type or href (or both) must be specified in a simple link.
-  class SimpleLink < Link
+  module SimpleLink
+    include Link
+    
     # xlink:type is optional, but if it is provided it MUST be "simple"
     
     def xlink_href
-      href = super
-      LegacyExtendedIRI.new(href).to_target(base)
+      LegacyExtendedIRI.new(super).to_target(base)
     end
     
     def linkbase?
