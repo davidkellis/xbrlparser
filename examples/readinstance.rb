@@ -6,7 +6,7 @@ require "pp"
 def main
   f = ARGV[0]
   
-  instance_doc = XBRL::Instance.load(f, File.absolute_path(f))
+  instance_doc = XBRL::Instance.load_document(f, File.absolute_path(f))
   pp instance_doc.root.namespace_scopes
   pp instance_doc.root.namespaces_by_prefix
   pp instance_doc.root.base

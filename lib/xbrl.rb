@@ -22,15 +22,6 @@ module XBRL
   module Instance
     include XmlElement
     
-    class << self
-      def load(filename, document_uri = nil)
-        file_contents = File.new(filename).read
-        document = Nokogiri.XML(file_contents, document_uri).extend(XmlDocument)      # returns a Nokogiri::XML::Document
-        document.root.extend(self)
-        document
-      end
-    end
-
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_3.2
     # determine the DTS that supports this XBRL Instance document
     def dts
@@ -45,30 +36,10 @@ module XBRL
       linkbaseRef_elements
     end
     
-    def schemaRefs
-      schemaRef_elements.to_a.map {|n| n.extend ::XBRL::Linkbase::SchemaRef }
-    end
-    
-    def linkbaseRefs
-      linkbaseRef_elements.to_a.map {|n| n.extend ::XBRL::Linkbase::LinkbaseRef }
-    end
-    
-    def roleRefs
-      roleRef_elements.to_a.map {|n| n.extend ::XBRL::Linkbase::RoleRef }
-    end
-    
-    def arcroleRefs
-      arcroleRef_elements.to_a.map {|n| n.extend ::XBRL::Linkbase::ArcroleRef }
-    end
-    
     def items
     end
     
     def tuples
-    end
-    
-    def contexts
-      
     end
 
     # schemaRef elements
@@ -79,11 +50,12 @@ module XBRL
     # ***In an XBRL instance, the schemaRef element points to a taxonomy schema that becomes part of the DTS
     # supporting that XBRL instance.***
     # The schema definition of the schemaRef element is "used to link to XBRL taxonomy schemas from XBRL instances".
-    def schemaRef_elements
-      # xbrl_tag = qname(NS_XBRLI, 'xbrl')
-      schemaRef_tag = qname(NS_LINK, 'schemaRef')
-      # xpath("/#{xbrl_tag}/#{schemaRef_tag}")
-      xpath("./#{schemaRef_tag}")   # this works because . refers to the <xbrl> root tag
+    def schemaRefs
+      # # xbrl_tag = qname(NS_XBRLI, 'xbrl')
+      # schemaRef_tag = qname(NS_LINK, 'schemaRef')
+      # # xpath("/#{xbrl_tag}/#{schemaRef_tag}")
+      # xpath("./#{schemaRef_tag}")   # this works because . refers to the <xbrl> root tag
+      qelements(NS_LINK, 'schemaRef').to_a.map {|n| n.extend ::XBRL::Linkbase::SchemaRef }
     end
   
     # linkbaseRef elements
@@ -93,34 +65,31 @@ module XBRL
     # schemaRef elements and precede all other elements, in document order.
     # The schema definition of the linkbaseRef element is "used to link to XBRL taxonomy extended links from
     #   taxonomy schema documents and from XBRL instances."
-    def linkbaseRef_elements
-      linkbaseRef_tag = qname(NS_LINK, 'linkbaseRef')
-      xpath("./#{linkbaseRef_tag}")
+    def linkbaseRefs
+      qelements(NS_LINK, 'linkbaseRef').to_a.map {|n| n.extend ::XBRL::Linkbase::LinkbaseRef }
     end
   
     # roleRef elements
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.4
     # roleRef elements are used in XBRL instances to reference the definitions of any custom xlink:role attribute
     # values used in footnote links in the XBRL instance.
-    def roleRef_elements
-      roleRef_tag = qname(NS_LINK, 'roleRef')
-      xpath("./#{roleRef_tag}")
+    def roleRefs
+      qelements(NS_LINK, 'roleRef').to_a.map {|n| n.extend ::XBRL::Linkbase::RoleRef }
     end
-  
+    
     # arcroleRef elements
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.5
     # arcroleRef elements are used in XBRL instances to reference the definitions of any custom xlink:arcrole attribute
     # values used in footnote links in the XBRL instance.
-    def arcroleRef_elements
-      arcroleRef_tag = qname(NS_LINK, 'arcroleRef')
-      xpath("./#{arcroleRef_tag}")
+    def arcroleRef
+      qelements(NS_LINK, 'arcroleRef').to_a.map {|n| n.extend ::XBRL::Linkbase::ArcroleRef }
     end
     
     # return item_elements and tuple_elements; items first, followed by tuples
     def fact_elements
       items.to_a + tuples.to_a    # concatenate both arrays
     end
-  
+    
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.6
     # Simple facts are expressed using items (and are referred to as items in this specification)
     # All elements representing single facts or business measurements defined in an XBRL taxonomy document and reported 
@@ -129,41 +98,34 @@ module XBRL
     # item elements MUST NOT be descendants of other item elements. Structural relationships necessary in an XBRL
     #   instance MUST be captured only using tuples (see Section 4.9).
     def item_elements
-      tag = qname(NS_XBRLI, '')
-      xpath("./#{tag}")
     end
-  
+    
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.9
     # compound facts are expressed using tuples (and are referred to as tuples in this specification)
     def tuple_elements
-      tag = qname(NS_XBRLI, '')
-      xpath("./#{tag}")
     end
-  
+    
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.7
-    def context_elements
-      tag = qname(NS_XBRLI, 'context')
-      xpath("./#{tag}")
+    def contexts
+      qelements(NS_XBRLI, 'context').to_a.map {|n| n.extend(Context) }
     end
-  
+    
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.8
-    def unit_elements
-      tag = qname(NS_XBRLI, 'unit')
-      xpath("./#{tag}")
+    def units
+      qelements(NS_XBRLI, 'unit').to_a.map {|n| n.extend(Unit) }
     end
-  
+    
     # footnoteLink elements
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.11
-    def footnoteLink_elements
-      tag = qname(NS_LINK, 'footnoteLink')
-      xpath("./#{tag}")
+    def footnoteLinks
+      qelements(NS_XBRLI, 'footnoteLink').to_a.map {|n| n.extend(FootnoteLink) }
     end
   end
   
   module Item
     include XmlElement
   end
-
+  
   module Tuple
     include XmlElement
   end
@@ -172,23 +134,85 @@ module XBRL
   module Context
     include XmlElement
     
+    # xml:id is REQUIRED (MUST conform to the ID type specification: http://www.w3.org/TR/REC-xml#NT-TokenizedType)
     # xbrli:entity is REQUIRED
     # xbrli:period is REQUIRED
+    # xbrli:scenario is optional
     
     def entity
       tag = qname(NS_XBRLI, 'entity')
-      xpath("./#{tag}").first
+      xpath("./#{tag}").first.extend(Entity)
     end
     
     def period
-      tag = qname(NS_XBRLI, 'entity')
-      xpath("./#{tag}").first
+      tag = qname(NS_XBRLI, 'period')
+      xpath("./#{tag}").first.extend(Period)
     end
     
     def scenarios
-      tag = qname(NS_XBRLI, 'entity')
-      xpath("./#{tag}").to_a
+      tag = qname(NS_XBRLI, 'scenario')
+      xpath("./#{tag}").to_a.map {|n| n.extend(Scenario) }
     end
+  end
+  
+  module Entity
+    include XmlElement
+    
+    def identifier
+      tag = qname(NS_XBRLI, 'identifier')
+      xpath("./#{tag}").first.extend(EntityIdentifier)
+    end
+    
+    # Segment elements are optional, but if they are given they MUST NOT be empty.
+    def segments
+      qelements(NS_XBRLI, 'segment').to_a
+    end
+  end
+  
+  module EntityIdentifier
+    include XmlElement
+    
+    # The content MUST be a token that is a valid identifier within the namespace referenced by the scheme attribute.
+    # attribute 'scheme' is REQUIRED
+    
+    def scheme
+      qattr(NS_XBRLI, 'scheme')
+    end
+    
+    # Returns the content of the <identifier> element. The content is a TOKEN identifier.
+    def to_s
+      content
+    end
+  end
+  
+  module Period
+    include XmlElement
+    
+    def instant
+      tag = qname(NS_XBRLI, 'instant')
+      xpath("./#{tag}").first
+    end
+    
+    def start_date
+      tag = qname(NS_XBRLI, 'startDate')
+      xpath("./#{tag}").first
+    end
+    
+    def end_date
+      tag = qname(NS_XBRLI, 'endDate')
+      xpath("./#{tag}").first
+    end
+    
+    def forever?
+      tag = qname(NS_XBRLI, 'forever')
+      !xpath("./#{tag}").first.nil?
+    end
+  end
+  
+  module Scenario
+    include XmlElement
+    
+    # The scenario element MUST NOT be empty.
   end
   
   # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.8

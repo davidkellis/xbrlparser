@@ -20,6 +20,19 @@ end
 
 # XmlElement should extend Nokogiri::XML::Node objects
 module XmlElement
+  module ClassMethods
+    def load_document(filename, document_uri = nil)
+      file_contents = File.new(filename).read
+      document = Nokogiri.XML(file_contents, document_uri).extend(XmlDocument)      # returns a Nokogiri::XML::Document
+      document.root.extend(self)
+      document
+    end
+  end
+  
+  def self.included(base)
+    base.extend(ClassMethods)
+  end
+
   def id
     qattr(NS_XSD, 'id')
   end
@@ -81,6 +94,11 @@ module XmlElement
     end
   end
   
+  def qelements(ns_uri, tag)
+    tag = qname(ns_uri, tag)
+    xpath("./#{tag}")
+  end
+  
   # I think this does the same thing as a call to attribute_with_ns(attribute_name, ns)
   def qattr(ns, attribute_name)
     attr_name = qname(ns, attribute_name)
@@ -91,4 +109,5 @@ end
 
 module XmlSchema
   include XmlElement
+  
 end
