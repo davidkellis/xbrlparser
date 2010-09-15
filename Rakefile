@@ -19,6 +19,7 @@ spec = Gem::Specification.new do |s|
   s.add_runtime_dependency 'leiri'
   s.add_runtime_dependency 'xpointer'
   s.add_runtime_dependency 'nokogiri'
+  s.add_runtime_dependency 'hacksaw'
 end
 
 Rake::GemPackageTask.new(spec).define

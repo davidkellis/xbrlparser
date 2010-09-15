@@ -10,7 +10,8 @@ def main
   pp instance_doc.root.namespace_scopes
   pp instance_doc.root.namespaces_by_prefix
   pp instance_doc.root.base
-  pp instance_doc.root.schemaRef_elements
+  pp instance_doc.root.schemaRefs
+  pp instance_doc.root.contexts.length
   # instance.facts.each do |fact|
   #   puts fact
   # end

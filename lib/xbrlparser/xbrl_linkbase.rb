@@ -1,14 +1,10 @@
-require 'xml'
-require 'xlink'
-require 'xbrl_xlink'
-require 'xbrl'
 
 module XBRL
   module Linkbase
-    include XmlElement
+    include Hacksaw::XML::Element
     
     module Documentation
-      include XmlElement
+      include Hacksaw::XML::Element
       
       # documentation MUST have string content
       def to_s
@@ -68,7 +64,7 @@ module XBRL
       # xlink:arcrole is REQUIRED and MUST be 'http://www.w3.org/1999/xlink/properties/linkbase'
     end
     
-    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.11
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.11.1
     module FootnoteLink
       include ::XBRL::XLink::ExtendedLink
     end
@@ -77,39 +73,19 @@ module XBRL
     end
   
     def documentation
-      documentation_elements.to_a.map {|n| n.extend Documentation }
+      extend_children_with_tag(NS_LINK, 'documentation', Documentation)
     end
   
     def roleRefs
-      roleRef_elements.to_a.map {|n| n.extend RoleRef }
+      extend_children_with_tag(NS_LINK, 'roleRef', RoleRef)
     end
 
     def arcroleRefs
-      arcroleRef_elements.to_a.map {|n| n.extend ArcroleRef }
+      extend_children_with_tag(NS_LINK, 'arcroleRef', ArcroleRef)
     end
     
     def extended_links
-      extended_type_elements.to_a.map {|n| n.extend(XBRL::XLink::ExtendedLink) }
-    end
-  
-    def documentation_elements
-      documentation_tag = qname(NS_LINK, 'documentation')
-      xpath("./#{documentation_tag}")   # this works because . refers to the <linkbase> root tag
-    end
-  
-    def roleRef_elements
-      roleRef_tag = qname(NS_LINK, 'roleRef')
-      xpath("./#{roleRef_tag}")
-    end
-  
-    def arcroleRef_elements
-      arcroleRef_tag = qname(NS_LINK, 'arcroleRef')
-      xpath("./#{arcroleRef_tag}")
-    end
-  
-    def extended_type_elements
-      attr_name = qname(NS_XL, 'type')
-      xpath("*[@#{attr_name}='extended']")
+      extend_children_with_attr(NS_XL, 'type', 'extended', ::XBRL::XLink::ExtendedLink)
     end
   end
 end

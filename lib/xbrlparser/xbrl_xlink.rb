@@ -1,12 +1,9 @@
-require 'nokogiri'
-require 'xml'
-require 'xlink'
 
 module XBRL
   module XLink
     # Implements xl:documentation
     module Documentation
-      include XmlElement
+      include Hacksaw::XML::Element
       
       # documentation MUST have string content
       def to_s
@@ -15,20 +12,20 @@ module XBRL
     end
 
     module Locator
-      include ::XLink::Locator
+      include Hacksaw::XLink::Locator
       
       # xlink:type MUST be "locator"
       # xlink:href is REQUIRED
       # xlink:label is REQUIRED
       
-      def title_type_elements(ns = NS_XL)
-        super(ns)
+      def titles
+        extend_children_with_attr(NS_XL, 'type', 'title', Title)
       end
     end
     
     # defines local resources
     module Resource
-      include ::XLink::Resource
+      include Hacksaw::XLink::Resource
       
       # xlink:type MUST be "resource"
       # xlink:label is REQUIRED
@@ -38,7 +35,7 @@ module XBRL
     # The semantics of xl:arc are **complicated**, but they're documented at:
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_3.5.3.9
     module Arc
-      include ::XLink::Arc
+      include Hacksaw::XLink::Arc
       
       # xlink:type MUST be "arc"
       # xlink:from is REQUIRED
@@ -66,50 +63,45 @@ module XBRL
         qattr(NS_XL, 'priority').to_i
       end
       
-      def title_type_elements(ns = NS_XL)
-        super(ns)
+      def titles
+        extend_children_with_attr(NS_XL, 'type', 'title', Title)
       end
     end
     
 
     module ExtendedLink
-      include ::XLink::ExtendedLink
+      include Hacksaw::XLink::ExtendedLink
       
       # xlink:type MUST be "extended"
       # xlink:role MUST occur on "standard extended links"
       
-      def documentation
-        documentation_elements.to_a.map {|n| n.extend Documentation }
-      end
-      
       # All XBRL extended links MAY contain documentation elements.
       # The documentation elements in extended links conform to the same syntax requirements that apply 
       # to documentation elements in linkbase elements. See Section 3.5.2.3 for details.
-      def documentation_elements
-        documentation_tag = qname(NS_XL, 'documentation')
-        xpath("./#{documentation_tag}")   # this works because . refers to the <linkbase> root tag
+      def documentation
+        extend_children_with_tag(NS_XL, 'documentation', Documentation)
       end
       
-      def resource_type_elements(ns = NS_XL)
-        super(ns)
+      def resources
+        extend_children_with_attr(NS_XL, 'type', 'resource', Resource)
+      end
+    
+      def locators
+        extend_children_with_attr(NS_XL, 'type', 'locator', Locator)
+      end
+    
+      def arcs
+        extend_children_with_attr(NS_XL, 'type', 'arc', Arc)
       end
 
-      def locator_type_elements(ns = NS_XL)
-        super(ns)
-      end
-
-      def arc_type_elements(ns = NS_XL)
-        super(ns)
-      end
-
-      def title_type_elements(ns = NS_XL)
-        super(ns)
+      def titles
+        extend_children_with_attr(NS_XL, 'type', 'title', Title)
       end
     end
     
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_3.5.1
     module SimpleLink
-      include ::XLink::SimpleLink
+      include Hacksaw::XLink::SimpleLink
 
       # xlink_type MUST be "simple"
       # xlink_href is REQUIRED

@@ -1,9 +1,3 @@
-require 'nokogiri'
-require 'xml'
-require 'xlink'
-require 'xbrl_linkbase'
-require 'xbrl_xlink'
-require 'leiri'
 
 module XBRL
   # The contants defined below represent the namespace prefixes defined in Sec. 1.6 of the XBRL spec.
@@ -20,7 +14,7 @@ module XBRL
 
   # This class models everything between <xbrl> and </xbrl>
   module Instance
-    include XmlElement
+    include Hacksaw::XML::Element
     
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_3.2
     # determine the DTS that supports this XBRL Instance document
@@ -29,11 +23,9 @@ module XBRL
     end
     
     def taxonomies
-      schemaRef_elements
     end
     
     def linkbases
-      linkbaseRef_elements
     end
     
     def items
@@ -55,7 +47,7 @@ module XBRL
       # schemaRef_tag = qname(NS_LINK, 'schemaRef')
       # # xpath("/#{xbrl_tag}/#{schemaRef_tag}")
       # xpath("./#{schemaRef_tag}")   # this works because . refers to the <xbrl> root tag
-      qelements(NS_LINK, 'schemaRef').to_a.map {|n| n.extend ::XBRL::Linkbase::SchemaRef }
+      extend_children_with_tag(NS_LINK, 'schemaRef', ::XBRL::Linkbase::SchemaRef)
     end
   
     # linkbaseRef elements
@@ -66,7 +58,7 @@ module XBRL
     # The schema definition of the linkbaseRef element is "used to link to XBRL taxonomy extended links from
     #   taxonomy schema documents and from XBRL instances."
     def linkbaseRefs
-      qelements(NS_LINK, 'linkbaseRef').to_a.map {|n| n.extend ::XBRL::Linkbase::LinkbaseRef }
+      extend_children_with_tag(NS_LINK, 'linkbaseRef', ::XBRL::Linkbase::LinkbaseRef)
     end
   
     # roleRef elements
@@ -74,7 +66,7 @@ module XBRL
     # roleRef elements are used in XBRL instances to reference the definitions of any custom xlink:role attribute
     # values used in footnote links in the XBRL instance.
     def roleRefs
-      qelements(NS_LINK, 'roleRef').to_a.map {|n| n.extend ::XBRL::Linkbase::RoleRef }
+      extend_children_with_tag(NS_LINK, 'roleRef', ::XBRL::Linkbase::RoleRef)
     end
     
     # arcroleRef elements
@@ -82,7 +74,7 @@ module XBRL
     # arcroleRef elements are used in XBRL instances to reference the definitions of any custom xlink:arcrole attribute
     # values used in footnote links in the XBRL instance.
     def arcroleRef
-      qelements(NS_LINK, 'arcroleRef').to_a.map {|n| n.extend ::XBRL::Linkbase::ArcroleRef }
+      extend_children_with_tag(NS_LINK, 'arcroleRef', ::XBRL::Linkbase::ArcroleRef)
     end
     
     # return item_elements and tuple_elements; items first, followed by tuples
@@ -107,32 +99,32 @@ module XBRL
     
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.7
     def contexts
-      qelements(NS_XBRLI, 'context').to_a.map {|n| n.extend(Context) }
+      extend_children_with_tag(NS_XBRLI, 'context', Context)
     end
     
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.8
     def units
-      qelements(NS_XBRLI, 'unit').to_a.map {|n| n.extend(Unit) }
+      extend_children_with_tag(NS_XBRLI, 'unit', Unit)
     end
     
     # footnoteLink elements
-    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.11
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.11.1
     def footnoteLinks
-      qelements(NS_XBRLI, 'footnoteLink').to_a.map {|n| n.extend(FootnoteLink) }
+      extend_children_with_tag(NS_XBRLI, 'footnoteLink', ::XBRL::Linkbase::FootnoteLink)
     end
   end
   
   module Item
-    include XmlElement
+    include Hacksaw::XML::Element
   end
   
   module Tuple
-    include XmlElement
+    include Hacksaw::XML::Element
   end
   
   # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.7
   module Context
-    include XmlElement
+    include Hacksaw::XML::Element
     
     # xml:id is REQUIRED (MUST conform to the ID type specification: http://www.w3.org/TR/REC-xml#NT-TokenizedType)
     # xbrli:entity is REQUIRED
@@ -150,13 +142,12 @@ module XBRL
     end
     
     def scenarios
-      tag = qname(NS_XBRLI, 'scenario')
-      xpath("./#{tag}").to_a.map {|n| n.extend(Scenario) }
+      extend_children_with_tag(NS_XBRLI, 'scenario', Scenario)
     end
   end
   
   module Entity
-    include XmlElement
+    include Hacksaw::XML::Element
     
     def identifier
       tag = qname(NS_XBRLI, 'identifier')
@@ -170,7 +161,7 @@ module XBRL
   end
   
   module EntityIdentifier
-    include XmlElement
+    include Hacksaw::XML::Element
     
     # The content MUST be a token that is a valid identifier within the namespace referenced by the scheme attribute.
     # attribute 'scheme' is REQUIRED
@@ -186,7 +177,7 @@ module XBRL
   end
   
   module Period
-    include XmlElement
+    include Hacksaw::XML::Element
     
     def instant
       tag = qname(NS_XBRLI, 'instant')
@@ -210,14 +201,14 @@ module XBRL
   end
   
   module Scenario
-    include XmlElement
+    include Hacksaw::XML::Element
     
     # The scenario element MUST NOT be empty.
   end
   
   # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.8
   module Unit
-    include XmlElement
+    include Hacksaw::XML::Element
     
     def measures
       tag = qname(NS_XBRLI, 'measure')
