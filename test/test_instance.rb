@@ -4,10 +4,10 @@ require 'test/unit'
 require 'xbrlparser'
 require 'pp'
 
-class TestTaxonomy < Test::Unit::TestCase
-  def test_taxonomy_schema
-    path = File.join(File.expand_path(File.dirname(__FILE__)), '..', 'schema', 'us-gaap-2009-01-31.xsd')
-    doc = XBRL::Taxonomy.load_document(path, path)
+class TestInstance < Test::Unit::TestCase
+  def test_xbrl_instance
+    path = File.join(File.expand_path(File.dirname(__FILE__)), '..', 'sampledata', 'adbe-20100604.xml')
+    doc = XBRL::Instance.load_document(path, path)
     
     
     # assert_equal 13452, doc.root.element_tags.count

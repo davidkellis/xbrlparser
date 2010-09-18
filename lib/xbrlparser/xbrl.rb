@@ -50,11 +50,7 @@ module XBRL
     # ***In an XBRL instance, the schemaRef element points to a taxonomy schema that becomes part of the DTS
     # supporting that XBRL instance.***
     # The schema definition of the schemaRef element is "used to link to XBRL taxonomy schemas from XBRL instances".
-    def schemaRefs
-      # # xbrl_tag = qname(NS_XBRLI, 'xbrl')
-      # schemaRef_tag = qname(NS_LINK, 'schemaRef')
-      # # xpath("/#{xbrl_tag}/#{schemaRef_tag}")
-      # xpath("./#{schemaRef_tag}")   # this works because . refers to the <xbrl> root tag
+    def schemaRef_tags
       extend_children_with_tag(NS_LINK, 'schemaRef', ::XBRL::Linkbase::SchemaRef)
     end
   
@@ -65,7 +61,7 @@ module XBRL
     # schemaRef elements and precede all other elements, in document order.
     # The schema definition of the linkbaseRef element is "used to link to XBRL taxonomy extended links from
     #   taxonomy schema documents and from XBRL instances."
-    def linkbaseRefs
+    def linkbaseRef_tags
       extend_children_with_tag(NS_LINK, 'linkbaseRef', ::XBRL::Linkbase::LinkbaseRef)
     end
   
@@ -73,7 +69,7 @@ module XBRL
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.4
     # roleRef elements are used in XBRL instances to reference the definitions of any custom xlink:role attribute
     # values used in footnote links in the XBRL instance.
-    def roleRefs
+    def roleRef_tags
       extend_children_with_tag(NS_LINK, 'roleRef', ::XBRL::Linkbase::RoleRef)
     end
     
@@ -81,12 +77,12 @@ module XBRL
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.5
     # arcroleRef elements are used in XBRL instances to reference the definitions of any custom xlink:arcrole attribute
     # values used in footnote links in the XBRL instance.
-    def arcroleRef
+    def arcroleRef_tags
       extend_children_with_tag(NS_LINK, 'arcroleRef', ::XBRL::Linkbase::ArcroleRef)
     end
     
     # return item_elements and tuple_elements; items first, followed by tuples
-    def fact_elements
+    def fact_tags
       items.to_a + tuples.to_a    # concatenate both arrays
     end
     
@@ -97,27 +93,27 @@ module XBRL
     #   group originally based on item. XBRL taxonomies include taxonomy schemas that contain such element definitions.
     # item elements MUST NOT be descendants of other item elements. Structural relationships necessary in an XBRL
     #   instance MUST be captured only using tuples (see Section 4.9).
-    def item_elements
+    def item_tags
     end
     
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.9
     # compound facts are expressed using tuples (and are referred to as tuples in this specification)
-    def tuple_elements
+    def tuple_tags
     end
     
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.7
-    def contexts
+    def context_tags
       extend_children_with_tag(NS_XBRLI, 'context', Context)
     end
     
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.8
-    def units
+    def unit_tags
       extend_children_with_tag(NS_XBRLI, 'unit', Unit)
     end
     
     # footnoteLink elements
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.11.1
-    def footnoteLinks
+    def footnoteLink_tags
       extend_children_with_tag(NS_XBRLI, 'footnoteLink', ::XBRL::Linkbase::FootnoteLink)
     end
   end
@@ -139,17 +135,17 @@ module XBRL
     # xbrli:period is REQUIRED
     # xbrli:scenario is optional
     
-    def entity
+    def entity_tag
       tag = qname(NS_XBRLI, 'entity')
       xpath("./#{tag}").first.extend(Entity)
     end
     
-    def period
+    def period_tags
       tag = qname(NS_XBRLI, 'period')
       xpath("./#{tag}").first.extend(Period)
     end
     
-    def scenarios
+    def scenario_tags
       extend_children_with_tag(NS_XBRLI, 'scenario', Scenario)
     end
   end
@@ -157,13 +153,13 @@ module XBRL
   module Entity
     include Hacksaw::XML::Element
     
-    def identifier
+    def identifier_tag
       tag = qname(NS_XBRLI, 'identifier')
       xpath("./#{tag}").first.extend(EntityIdentifier)
     end
     
     # Segment elements are optional, but if they are given they MUST NOT be empty.
-    def segments
+    def segment_tags
       qelements(NS_XBRLI, 'segment').to_a
     end
   end
@@ -174,7 +170,7 @@ module XBRL
     # The content MUST be a token that is a valid identifier within the namespace referenced by the scheme attribute.
     # attribute 'scheme' is REQUIRED
     
-    def scheme
+    def scheme_attr
       qattr(NS_XBRLI, 'scheme')
     end
     
@@ -187,17 +183,17 @@ module XBRL
   module Period
     include Hacksaw::XML::Element
     
-    def instant
+    def instant_tag
       tag = qname(NS_XBRLI, 'instant')
       xpath("./#{tag}").first
     end
     
-    def start_date
+    def startDate_tag
       tag = qname(NS_XBRLI, 'startDate')
       xpath("./#{tag}").first
     end
     
-    def end_date
+    def endDate_tag
       tag = qname(NS_XBRLI, 'endDate')
       xpath("./#{tag}").first
     end
@@ -218,12 +214,12 @@ module XBRL
   module Unit
     include Hacksaw::XML::Element
     
-    def measures
+    def measure_tags
       tag = qname(NS_XBRLI, 'measure')
       xpath("./#{tag}").to_a
     end
     
-    def divide
+    def divide_tag
       tag = qname(NS_XBRLI, 'divide')
       xpath("./#{tag}").first
     end

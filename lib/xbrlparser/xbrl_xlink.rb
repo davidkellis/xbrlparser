@@ -18,8 +18,8 @@ module XBRL
       # xlink:href is REQUIRED
       # xlink:label is REQUIRED
       
-      def titles
-        extend_children_with_attr(NS_XL, 'type', 'title', Title)
+      def title_tags
+        extend_children_with_qattr(NS_XL, 'type', 'title', Title)
       end
     end
     
@@ -49,22 +49,22 @@ module XBRL
       # are being displayed.
       # ...
       # The value of the order attribute is not restricted to integers...
-      def order
+      def order_attr
         qattr(NS_XL, 'order').to_f
       end
       
       # The optional use attribute MUST take one of two possible values – "optional", or "prohibited".
-      def use
+      def use_attr
         qattr(NS_XL, 'use')
       end
       
       # The content of the priority attribute MUST be an integer.
-      def priority
+      def priority_attr
         qattr(NS_XL, 'priority').to_i
       end
       
-      def titles
-        extend_children_with_attr(NS_XL, 'type', 'title', Title)
+      def title_tags
+        extend_children_with_qattr(NS_XL, 'type', 'title', Title)
       end
     end
     
@@ -78,24 +78,24 @@ module XBRL
       # All XBRL extended links MAY contain documentation elements.
       # The documentation elements in extended links conform to the same syntax requirements that apply 
       # to documentation elements in linkbase elements. See Section 3.5.2.3 for details.
-      def documentation
+      def documentation_tags
         extend_children_with_tag(NS_XL, 'documentation', Documentation)
       end
       
-      def resources
-        extend_children_with_attr(NS_XL, 'type', 'resource', Resource)
+      def resource_tags
+        extend_children_with_qattr(NS_XL, 'type', 'resource', Resource)
       end
     
-      def locators
-        extend_children_with_attr(NS_XL, 'type', 'locator', Locator)
+      def locator_tags
+        extend_children_with_qattr(NS_XL, 'type', 'locator', Locator)
       end
     
-      def arcs
-        extend_children_with_attr(NS_XL, 'type', 'arc', Arc)
+      def arc_tags
+        extend_children_with_qattr(NS_XL, 'type', 'arc', Arc)
       end
 
-      def titles
-        extend_children_with_attr(NS_XL, 'type', 'title', Title)
+      def title_tags
+        extend_children_with_qattr(NS_XL, 'type', 'title', Title)
       end
     end
     

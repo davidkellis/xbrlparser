@@ -1,0 +1,675 @@
+<?xml version="1.0" encoding="us-ascii"?>
+<!--XBRL document created with Bowne Tagger. XBRL Parser version 10.0.0.13-->
+<!--Based on XBRL 2.1-->
+<!--Created on: 2/6/2009 11:25:47 AM-->
+<!--Modified on: 6/30/2010 11:19:51 AM-->
+<schema xmlns="http://www.w3.org/2001/XMLSchema" xmlns:xbrli="http://www.xbrl.org/2003/instance" xmlns:link="http://www.xbrl.org/2003/linkbase" xmlns:xlink="http://www.w3.org/1999/xlink" targetNamespace="http://adobe.com/2010-06-04" xmlns:adbe="http://adobe.com/2010-06-04" elementFormDefault="qualified" attributeFormDefault="unqualified" xmlns:us-types="http://xbrl.us/us-types/2009-01-31" xmlns:xbrldt="http://xbrl.org/2005/xbrldt">
+  <annotation>
+    <appinfo>
+      <link:roleType roleURI="http://adobe.com/role/SubsequentEventsDetails" id="SubsequentEventsDetails">
+        <link:definition>0618 - Disclosure - Subsequent Events (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/SubsequentEvents" id="SubsequentEvents">
+        <link:definition>0218 - Disclosure - Subsequent Events</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StockholdersEquity" id="StockholdersEquity">
+        <link:definition>0212 - Disclosure - Stockholders' Equity</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StockholdersEquityTables" id="StockholdersEquityTables">
+        <link:definition>0512 - Disclosure - Stockholders' Equity (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StockholdersEquityDetails" id="StockholdersEquityDetails">
+        <link:definition>0612 - Disclosure - Stockholders' Equity (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/CashCashEquivalentsAndShortTermInvestmentsDetails4" id="CashCashEquivalentsAndShortTermInvestmentsDetails4">
+        <link:definition>0603 - Disclosure - C and C Equivalents and Short-Term Investments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/CashCashEquivalentsAndShortTermInvestmentsDetails3" id="CashCashEquivalentsAndShortTermInvestmentsDetails3">
+        <link:definition>0603 - Disclosure - C and C Equivalents and Short-Term Investments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/RestructuringChargesDetails4" id="RestructuringChargesDetails4">
+        <link:definition>0611 - Disclosure - Restructuring Charges (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/RestructuringChargesDetails3" id="RestructuringChargesDetails3">
+        <link:definition>0611 - Disclosure - Restructuring Charges (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/RestructuringChargesDetails2" id="RestructuringChargesDetails2">
+        <link:definition>0611 - Disclosure - Restructuring Charges (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StockBasedCompensationDetails4" id="StockBasedCompensationDetails4">
+        <link:definition>0610 - Disclosure - Stock-Based Compensation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StockBasedCompensationDetails3" id="StockBasedCompensationDetails3">
+        <link:definition>0610 - Disclosure - Stock-Based Compensation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StockBasedCompensationDetails2" id="StockBasedCompensationDetails2">
+        <link:definition>0610 - Disclosure - Stock-Based Compensation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/DerivativesAndHedgingActivitiesDetails4" id="DerivativesAndHedgingActivitiesDetails4">
+        <link:definition>0605 - Disclosure - Derivatives and Hedging Activities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/DerivativesAndHedgingActivitiesDetails3" id="DerivativesAndHedgingActivitiesDetails3">
+        <link:definition>0605 - Disclosure - Derivatives and Hedging Activities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/DerivativesAndHedgingActivitiesDetails2" id="DerivativesAndHedgingActivitiesDetails2">
+        <link:definition>0605 - Disclosure - Derivatives and Hedging Activities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/FairValueMeasurementsDetails4" id="FairValueMeasurementsDetails4">
+        <link:definition>0604 - Disclosure - Fair Value Measurements (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/FairValueMeasurementsDetails3" id="FairValueMeasurementsDetails3">
+        <link:definition>0604 - Disclosure - Fair Value Measurements (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/FairValueMeasurementsDetails2" id="FairValueMeasurementsDetails2">
+        <link:definition>0604 - Disclosure - Fair Value Measurements (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/CashCashEquivalentsAndShortTermInvestmentsDetails2" id="CashCashEquivalentsAndShortTermInvestmentsDetails2">
+        <link:definition>0603 - Disclosure - Cash, Cash Equivalents and Short-Term Investments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/SummaryOfSignificantAccountingPoliciesPolicies" id="SummaryOfSignificantAccountingPoliciesPolicies">
+        <link:definition>0401 - Disclosure - Basis of Presentation and Summary of Significant Accounting Policies (Policies)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/DerivativesAndHedgingActivities" id="DerivativesAndHedgingActivities">
+        <link:definition>0205 - Disclosure - Derivatives and Hedging Activities</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/DerivativesAndHedgingActivitiesTables" id="DerivativesAndHedgingActivitiesTables">
+        <link:definition>0505 - Disclosure - Derivatives and Hedging Activities (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/DerivativesAndHedgingActivitiesDetails" id="DerivativesAndHedgingActivitiesDetails">
+        <link:definition>0605 - Disclosure - Derivatives and Hedging Activities (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/Debt" id="Debt">
+        <link:definition>0215 - Disclosure - Debt</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/DebtDetails" id="DebtDetails">
+        <link:definition>0615 - Disclosure - Debt (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/IndustrySegmentGeographicInformationAndSignificantCustomersDetails" id="IndustrySegmentGeographicInformationAndSignificantCustomersDetails">
+        <link:definition>0617 - Disclosure - Segments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/IncomeTaxesDetails" id="IncomeTaxesDetails">
+        <link:definition>0609 - Disclosure - Income Taxes (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/FairValueMeasurementsDetails" id="FairValueMeasurementsDetails">
+        <link:definition>0604 - Disclosure - Fair Value Measurements (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/AcquisitionsDetails" id="AcquisitionsDetails">
+        <link:definition>0602 - Disclosure - Acquisitions (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/IndustrySegmentGeographicInformationAndSignificantCustomersTables" id="IndustrySegmentGeographicInformationAndSignificantCustomersTables">
+        <link:definition>0517 - Disclosure - Segments (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/FairValueMeasurementsTables" id="FairValueMeasurementsTables">
+        <link:definition>0504 - Disclosure - Fair Value Measurements (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/AcquisitionsTables" id="AcquisitionsTables">
+        <link:definition>0502 - Disclosure - Acquisitions (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/IndustrySegmentGeographicInformationAndSignificantCustomers" id="IndustrySegmentGeographicInformationAndSignificantCustomers">
+        <link:definition>0217 - Disclosure - Segments</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/IncomeTaxes" id="IncomeTaxes">
+        <link:definition>0209 - Disclosure - Income Taxes</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/FairValueMeasurements" id="FairValueMeasurements">
+        <link:definition>0204 - Disclosure - Fair Value Measurements</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/CommitmentsAndContingenciesDetails" id="CommitmentsAndContingenciesDetails">
+        <link:definition>0614 - Disclosure - Commitments and Contingencies (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/NonOperatingIncomeExpenseDetails" id="NonOperatingIncomeExpenseDetails">
+        <link:definition>0616 - Disclosure - Non-Operating Income (Expense) (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/NonOperatingIncomeExpenseTable" id="NonOperatingIncomeExpenseTable">
+        <link:definition>0516 - Disclosure - Non-Operating Income (Expense) (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/NetIncomePerShareDetails" id="NetIncomePerShareDetails">
+        <link:definition>0613 - Disclosure - Net Income Per Share (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/NetIncomePerShareTables" id="NetIncomePerShareTables">
+        <link:definition>0513 - Disclosure - Net Income Per Share (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/RestructuringChargesDetails" id="RestructuringChargesDetails">
+        <link:definition>0611 - Disclosure - Restructuring Charges (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/RestructuringChargesTables" id="RestructuringChargesTables">
+        <link:definition>0511 - Disclosure - Restructuring Charges (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StockBasedCompensationDetails" id="StockBasedCompensationDetails">
+        <link:definition>0610 - Disclosure - Stock-Based Compensation (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StockBasedCompensationTables" id="StockBasedCompensationTables">
+        <link:definition>0510 - Disclosure - Stock-Based Compensation (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/AccruedExpensesDetails" id="AccruedExpensesDetails">
+        <link:definition>0608 - Disclosure - Accrued Expenses (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/AccruedExpensesTable" id="AccruedExpensesTable">
+        <link:definition>0508 - Disclosure - Accrued Expenses (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/OtherAssetDetails" id="OtherAssetDetails">
+        <link:definition>0607 - Disclosure - Other Assets (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/OtherAssetsTable" id="OtherAssetsTable">
+        <link:definition>0507 - Disclosure - Other Assets (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/GoodwillAndPurchasedAndOtherIntangiblesDetails" id="GoodwillAndPurchasedAndOtherIntangiblesDetails">
+        <link:definition>0606 - Disclosure - Goodwill and Purchased and Other Intangibles (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/GoodwillAndPurchasedAndOtherIntangiblesTables" id="GoodwillAndPurchasedAndOtherIntangiblesTables">
+        <link:definition>0506 - Disclosure - Goodwill and Purchased and Other Intangibles (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/CashCashEquivalentsAndShortTermInvestmentsDetails" id="CashCashEquivalentsAndShortTermInvestmentsDetails">
+        <link:definition>0603 - Disclosure - C and C Equivalents and Short-Term Investments (Details)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/CashCashEquivalentsAndShortTermInvestmentsTable" id="CashCashEquivalentsAndShortTermInvestmentsTable">
+        <link:definition>0503 - Disclosure - Cash, Cash Equivalents and Short-Term Investments (Tables)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/Acquisitions" id="Acquisitions">
+        <link:definition>0202 - Disclosure - Acquisitions</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/CashCashEquivalentsAndShortTermInvestments" id="CashCashEquivalentsAndShortTermInvestments">
+        <link:definition>0203 - Disclosure - Cash, Cash Equivalents and Short-Term Investments</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/BalanceSheetsParenthetical" id="BalanceSheetsParenthetical">
+        <link:definition>0111 - Statement - Condensed Consolidated Balance Sheets (Unaudited) (Parenthetical)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StatementsOfCashFlows" id="StatementsOfCashFlows">
+        <link:definition>0130 - Statement - Condensed Consolidated Statements of Cash Flows (Unaudited)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/BalanceSheets" id="BalanceSheets">
+        <link:definition>0110 - Statement - Condensed Consolidated Balance Sheets (Unaudited)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StatementsOfIncome" id="StatementsOfIncome">
+        <link:definition>0120 - Statement - Condensed Consolidated Statements of Income (Unaudited)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/StockBasedCompensation" id="StockBasedCompensation">
+        <link:definition>0210 - Disclosure - Stock-Based Compensation</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/NonOperatingIncomeExpense" id="NonOperatingIncomeExpense">
+        <link:definition>0216 - Disclosure - Non-Operating Income (Expense)</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/CommitmentsAndContingencies" id="CommitmentsAndContingencies">
+        <link:definition>0214 - Disclosure - Commitments and Contingencies</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/NetIncomePerShare" id="NetIncomePerShare">
+        <link:definition>0213 - Disclosure - Net Income Per Share</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/Restructuring" id="Restructuring">
+        <link:definition>0211 - Disclosure - Restructuring Charges</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/AccruedExpenses" id="AccruedExpenses">
+        <link:definition>0208 - Disclosure - Accrued Expenses</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/OtherAssets" id="OtherAssets">
+        <link:definition>0207 - Disclosure - Other Assets</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/GoodwillAndPurchasedAndOtherIntangibles" id="GoodwillAndPurchasedAndOtherIntangibles">
+        <link:definition>0206 - Disclosure - Goodwill and Purchased and Other Intangibles</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/SignificantAccountingPolicies" id="SignificantAccountingPolicies">
+        <link:definition>0201 - Disclosure - Basis of Presentation and Summary of Significant Accounting Policies</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:roleType roleURI="http://adobe.com/role/DocumentAndEntityInformation" id="DocumentAndEntityInformation">
+        <link:definition>00 - Document - Document and Entity Information</link:definition>
+        <link:usedOn>link:presentationLink</link:usedOn>
+        <link:usedOn>link:calculationLink</link:usedOn>
+        <link:usedOn>link:definitionLink</link:usedOn>
+      </link:roleType>
+      <link:linkbaseRef xlink:type="simple" xlink:href="adbe-20100604_def.xml" xlink:role="http://www.xbrl.org/2003/role/definitionLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Definition Links, all" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="adbe-20100604_pre.xml" xlink:role="http://www.xbrl.org/2003/role/presentationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Presentation Links, all" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="adbe-20100604_cal.xml" xlink:role="http://www.xbrl.org/2003/role/calculationLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Calculation Links, all" />
+      <link:linkbaseRef xlink:type="simple" xlink:href="adbe-20100604_lab.xml" xlink:role="http://www.xbrl.org/2003/role/labelLinkbaseRef" xlink:arcrole="http://www.w3.org/1999/xlink/properties/linkbase" xlink:title="Label Links, all" />
+    </appinfo>
+  </annotation>
+  <import namespace="http://www.xbrl.org/2003/instance" schemaLocation="http://www.xbrl.org/2003/xbrl-instance-2003-12-31.xsd" />
+  <import namespace="http://www.xbrl.org/2003/linkbase" schemaLocation="http://www.xbrl.org/2003/xbrl-linkbase-2003-12-31.xsd" />
+  <import namespace="http://xbrl.us/dei/2009-01-31" schemaLocation="http://taxonomies.xbrl.us/us-gaap/2009/non-gaap/dei-2009-01-31.xsd" />
+  <import namespace="http://xbrl.us/us-gaap/2009-01-31" schemaLocation="http://taxonomies.xbrl.us/us-gaap/2009/elts/us-gaap-2009-01-31.xsd" />
+  <import namespace="http://xbrl.us/invest/2009-01-31" schemaLocation="http://taxonomies.xbrl.us/us-gaap/2009/non-gaap/invest-2009-01-31.xsd" />
+  <import namespace="http://xbrl.us/us-types/2009-01-31" schemaLocation="http://taxonomies.xbrl.us/us-gaap/2009/elts/us-types-2009-01-31.xsd" />
+  <import namespace="http://xbrl.org/2005/xbrldt" schemaLocation="http://www.xbrl.org/2005/xbrldt-2005.xsd" />
+  <element id="adbe_PrepaidExpensesOtherAssets" name="PrepaidExpensesOtherAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_AccruedRestructuringExpensesNoncurrent" name="AccruedRestructuringExpensesNoncurrent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_AccruedRestructuringExpensesCurrent" name="AccruedRestructuringExpensesCurrent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_GoodwillAndPurchasedAndOtherIntangiblesAbstract" name="GoodwillAndPurchasedAndOtherIntangiblesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AccruedExpensesAbstract" name="AccruedExpensesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CommitmentsAndContingenciesAbstract" name="CommitmentsAndContingenciesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_InvestmentInLeaseReceivable" name="InvestmentInLeaseReceivable" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_PurchasesLongTermInvestmentsOtherAssets" name="PurchasesLongTermInvestmentsOtherAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" />
+  <element id="adbe_AcquisitionsAbstract" name="AcquisitionsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_DocumentAndEntityInformationAbstract" name="DocumentAndEntityInformationAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CashCashEquivalentsAndShortTermInvestmentsTablesAbstract" name="CashCashEquivalentsAndShortTermInvestmentsTablesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CashCashEquivalentsAndShortTermInvestmentsDetailsAbstract" name="CashCashEquivalentsAndShortTermInvestmentsDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_GoodwillAndPurchasedAndOtherIntangiblesTablesAbstract" name="GoodwillAndPurchasedAndOtherIntangiblesTablesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_GoodwillAndPurchasedAndOtherIntangiblesDetailsAbstract" name="GoodwillAndPurchasedAndOtherIntangiblesDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_OtherAssetsDetailsAbstract" name="OtherAssetsDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AccruedExpensesTableAbstract" name="AccruedExpensesTableAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AccruedExpensesDetailsAbstract" name="AccruedExpensesDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_StockBasedCompensationTablesAbstract" name="StockBasedCompensationTablesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_StockBasedCompensationDetailsAbstract" name="StockBasedCompensationDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RestructuringChargesDetailsAbstract" name="RestructuringChargesDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_NetIncomePerShareTablesAbstract" name="NetIncomePerShareTablesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_NetIncomePerShareDetailsAbstract" name="NetIncomePerShareDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AccruedExpensesTextBlock" name="AccruedExpensesTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AccumulatedOtherComprehensiveIncomeNetOfTaxesTextBlock" name="AccumulatedOtherComprehensiveIncomeNetOfTaxesTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_NonOperatingIncomeExpenseDetailsAbstract" name="NonOperatingIncomeExpenseDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AssumptionsUsedToValueOptionGrantsTextBlock" name="AssumptionsUsedToValueOptionGrantsTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_StockOptionsOutstandingTextBlock" name="StockOptionsOutstandingTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RestrictedStockUnitActivityTextBlock" name="RestrictedStockUnitActivityTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RestrictedStockUnitsOutstandingTextBlock" name="RestrictedStockUnitsOutstandingTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AccruedExpenseAbstract" name="AccruedExpenseAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AssumptionsUsedToValueOptionGrantsAbstract" name="AssumptionsUsedToValueOptionGrantsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RestrictedStockUnitActivityAbstract" name="RestrictedStockUnitActivityAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RealizedInvestmentGains" name="RealizedInvestmentGains" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" />
+  <element id="adbe_UnrealizedInvestmentGains" name="UnrealizedInvestmentGains" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" />
+  <element id="adbe_RealizedInvestmentLosses" name="RealizedInvestmentLosses" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_UnrealizedInvestmentLosses" name="UnrealizedInvestmentLosses" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_UnvestedRestrictedStockAndPerformanceShareAwards" name="UnvestedRestrictedStockAndPerformanceShareAwards" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_OtherComprehensiveIncomeLoss" name="OtherComprehensiveIncomeLoss" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" />
+  <element id="adbe_SalesAndMarketingAllowances" name="SalesAndMarketingAllowances" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_AcquiredRightsToUseTechnology" name="AcquiredRightsToUseTechnology" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_InvestmentsNoncurrent" name="InvestmentsNoncurrent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_PrepaidLandLease" name="PrepaidLandLease" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_Other" name="Other" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_CashCashEquivalentAndShortTermInvestmentsAbstract" name="CashCashEquivalentAndShortTermInvestmentsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_FairValueAndGrossUnrealizedLossesRelatedToAvailableForSaleSecuritiesAbstract" name="FairValueAndGrossUnrealizedLossesRelatedToAvailableForSaleSecuritiesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_DueWithinTwoYearsEstimatedFairValue" name="DueWithinTwoYearsEstimatedFairValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_DueWithinThreeYearsEstimatedFairValue" name="DueWithinThreeYearsEstimatedFairValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_DueAfterThreeYearsEstimatedFairValue" name="DueAfterThreeYearsEstimatedFairValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_PurchasedTechnologyMember" name="PurchasedTechnologyMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_LocalizationMember" name="LocalizationMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_OtherIntangiblesMember" name="OtherIntangiblesMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_TotalOtherIntangibleAssetsMember" name="TotalOtherIntangibleAssetsMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CreativeSolutionsMember" name="CreativeSolutionsMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_KnowledgeWorkerMember" name="KnowledgeWorkerMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_EnterpriseMember" name="EnterpriseMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_PlatformMember" name="PlatformMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_PrintAndPublishingMember" name="PrintAndPublishingMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_TotalAssets" name="TotalAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_TotalLiabilities" name="TotalLiabilities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_Achieved" name="Achieved" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_SharesGrantedMember" name="SharesGrantedMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_TerminationBenefitsAndCostOfClosingRedundantFacilitiesMember" name="TerminationBenefitsAndCostOfClosingRedundantFacilitiesMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_MaximumSharesEligibleToReceiveMember" name="MaximumSharesEligibleToReceiveMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_TotalStockBasedCompensationCosts" name="TotalStockBasedCompensationCosts" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_GeneralAndAdministrative" name="GeneralAndAdministrative" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_SalesAndMarketing" name="SalesAndMarketing" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_ResearchAndDevelopment" name="ResearchAndDevelopment" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_CostOfRevenueServicesAndSupport" name="CostOfRevenueServicesAndSupport" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_OptionGrantsAndStockPurchaseRightsMember" name="OptionGrantsAndStockPurchaseRightsMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RestrictedStockAndPerformanceShareAwardsMember" name="RestrictedStockAndPerformanceShareAwardsMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CorporateBonds" name="CorporateBonds" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_Subtotal" name="Subtotal" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_UnrealizedGainsMember" name="UnrealizedGainsMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_UnrealizedLossesMember" name="UnrealizedLossesMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_GoodwillAndPurchasedAndOtherIntangiblesNumericAbstract" name="GoodwillAndPurchasedAndOtherIntangiblesNumericAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_IndirectInvestments" name="IndirectInvestments" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_DirectInvestmentsInPrivatelyHeldCompanies" name="DirectInvestmentsInPrivatelyHeldCompanies" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_AverageFairMarketValue" name="AverageFairMarketValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_StructuredRepurchasePrepayments" name="StructuredRepurchasePrepayments" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" />
+  <element id="adbe_UpFrontPaymentsTreasuryStock" name="UpFrontPaymentsTreasuryStock" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_CommitmentsAndContingenciesDetailsAbstract" name="CommitmentsAndContingenciesDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_OptionToPurchaseBuildings" name="OptionToPurchaseBuildings" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_ResidualValueGuarantees" name="ResidualValueGuarantees" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_UnamortizedPortionResidualValueGuaranteeUnderOtherLongTermLiabilitiesAndPrepaidRent" name="UnamortizedPortionResidualValueGuaranteeUnderOtherLongTermLiabilitiesAndPrepaidRent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_AdditionalPropertySubjectToOperatingLeaseMember" name="AdditionalPropertySubjectToOperatingLeaseMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_GrossProfitAsPercentageOfRevenue" name="GrossProfitAsPercentageOfRevenue" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ProceedsFromMaturitiesOfShortTermInvestments" name="ProceedsFromMaturitiesOfShortTermInvestments" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_AcquisitionNumericAbstract" name="AcquisitionNumericAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CashRecoveriesOfFringeBenefitTax" name="CashRecoveriesOfFringeBenefitTax" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_EmployeeStockPurchasePlanMember" name="EmployeeStockPurchasePlanMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CommitmentsAndContingenciesNumericAbstract" name="CommitmentsAndContingenciesNumericAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_MaximumMember" name="MaximumMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_MinimumMember" name="MinimumMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_TotalExpectedAmortizationExpense" name="TotalExpectedAmortizationExpense" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_Thereafter" name="Thereafter" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_ResidualValueGuraranteeUnderOtherLongTermLiabilities" name="ResidualValueGuraranteeUnderOtherLongTermLiabilities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_AccruedInterestMarginRateOverLIBORMinimum" name="AccruedInterestMarginRateOverLIBORMinimum" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AccruedInterestMarginRateOverLIBORMaximum" name="AccruedInterestMarginRateOverLIBORMaximum" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CommitmentFeesRateMinimum" name="CommitmentFeesRateMinimum" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CommitmentFeesRateMaximum" name="CommitmentFeesRateMaximum" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RestructuringActivitiesOtherAdjustments" name="RestructuringActivitiesOtherAdjustments" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_RepurchasedShares" name="RepurchasedShares" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RealizedGainsOnFixedIncomeInvestment" name="RealizedGainsOnFixedIncomeInvestment" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" />
+  <element id="adbe_StandbyLetterOfCredit" name="StandbyLetterOfCredit" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_UnrealizedLossesOnAvailableForSaleSecurities" name="UnrealizedLossesOnAvailableForSaleSecurities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_UnrealizedGainsOnAvailableForSaleSecurities" name="UnrealizedGainsOnAvailableForSaleSecurities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_PrepaidRentNoncurrent" name="PrepaidRentNoncurrent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_LeaseReceivablePurchased" name="LeaseReceivablePurchased" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_PositionsEliminated" name="PositionsEliminated" type="xbrli:integerItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CreditAdjustedRiskFreeInterestRate" name="CreditAdjustedRiskFreeInterestRate" type="xbrli:pureItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_EstimatedSubleaseIncomeNetOfFairValue" name="EstimatedSubleaseIncomeNetOfFairValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" />
+  <element id="adbe_AmortizationExpenseInFuturePeriodsTextBlock" name="AmortizationExpenseInFuturePeriodsTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_StockOptionActivityTextBlock" name="StockOptionActivityTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_PerformanceShareActivityCurrentYearProgramTextBlock" name="PerformanceShareActivityCurrentYearProgramTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_PerformanceShareActivityPriorYearsProgramsTextBlock" name="PerformanceShareActivityPriorYearsProgramsTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_OptionsOutstandingWeightedAverageContractualLife" name="OptionsOutstandingWeightedAverageContractualLife" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_OptionsVestedAndExpectedToVestWeightedAverageContractualLife" name="OptionsVestedAndExpectedToVestWeightedAverageContractualLife" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_OptionsExercisableWeightedAverageContractualLife" name="OptionsExercisableWeightedAverageContractualLife" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_OptionGrantsMember" name="OptionGrantsMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_PerformanceShareActivityPriorYearsProgramsAbstract" name="PerformanceShareActivityPriorYearsProgramsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_OtherAssetsNonCurrentTextBlock" name="OtherAssetsNonCurrentTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RestructuringChargesTextBlock" name="RestructuringChargesTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_OtherRestructuringChargesMember" name="OtherRestructuringChargesMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ExpectedReductionsInFullTimePositions" name="ExpectedReductionsInFullTimePositions" type="xbrli:integerItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AcquiredCompanyRestructuringActivitiesMember" name="AcquiredCompanyRestructuringActivitiesMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ParentRestructuringActivitiesMember" name="ParentRestructuringActivitiesMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_WeightedAverageRecognitionPeriodRelatedToNonVestedStockBasedAwards" name="WeightedAverageRecognitionPeriodRelatedToNonVestedStockBasedAwards" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_ClosingMarketValue" name="ClosingMarketValue" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_ValuationAssumptionsExpectedLifeRangeMinimum" name="ValuationAssumptionsExpectedLifeRangeMinimum" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ValuationAssumptionsExpectedLifeRangeMaximum" name="ValuationAssumptionsExpectedLifeRangeMaximum" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ValuationAssumptionsVolatilityRangeMinimum" name="ValuationAssumptionsVolatilityRangeMinimum" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ValuationAssumptionsVolatilityRangeMaximum" name="ValuationAssumptionsVolatilityRangeMaximum" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ValuationAssumptionsRiskFreeInterestRateRangeMinimum" name="ValuationAssumptionsRiskFreeInterestRateRangeMinimum" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ValuationAssumptionsRiskFreeInterestRateRangeMaximum" name="ValuationAssumptionsRiskFreeInterestRateRangeMaximum" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_Program2009Member" name="Program2009Member" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_PriorYearMember" name="PriorYearMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ShareBasedCompensationArrangementsByShareBasedPaymentAwardProgramNameAxis" name="ShareBasedCompensationArrangementsByShareBasedPaymentAwardProgramNameAxis" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrldt:dimensionItem" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ShareBasedCompensationArrangementsByShareBasedPaymentAwardProgramNameDomain" name="ShareBasedCompensationArrangementsByShareBasedPaymentAwardProgramNameDomain" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_VestedAndExpectedToVestShares" name="VestedAndExpectedToVestShares" type="xbrli:sharesItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_OutstandingWeightedAverageRemainingContractualLife" name="OutstandingWeightedAverageRemainingContractualLife" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_VestedAndExpectedToVestWeightedAverageRemainingContractualLife" name="VestedAndExpectedToVestWeightedAverageRemainingContractualLife" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_OutstandingIntrinsicValue" name="OutstandingIntrinsicValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_MoneyMarketFundsFairValue" name="MoneyMarketFundsFairValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_EquityAndFixedIncomeMutualFundsFairValue" name="EquityAndFixedIncomeMutualFundsFairValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_ValuationAssumptionsExpectedLifeRangeAbstract" name="ValuationAssumptionsExpectedLifeRangeAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ValuationAssumptionsVolatilityRangeAbstract" name="ValuationAssumptionsVolatilityRangeAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ValuationAssumptionsRiskFreeInterestRateRangeAbstract" name="ValuationAssumptionsRiskFreeInterestRateRangeAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_InvestmentsOfLimitedPartnership" name="InvestmentsOfLimitedPartnership" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_FairValueMeasurementsAbstract" name="FairValueMeasurementsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AcquisitionsTablesAbstract" name="AcquisitionsTablesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_FairValueMeasurementsTablesAbstract" name="FairValueMeasurementsTablesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AcquisitionsDetailsAbstract" name="AcquisitionsDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_FairValueMeasurementsDetailsAbstract" name="FairValueMeasurementsDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_IncomeTaxesDetailsAbstract" name="IncomeTaxesDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_NetTangibleAssetsFairValue" name="NetTangibleAssetsFairValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_FairValueMeasurementsNumericAbstract" name="FairValueMeasurementsNumericAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ReclassificationFromDeferredIncomeTaxesToIncomeTaxesPayable" name="ReclassificationFromDeferredIncomeTaxesToIncomeTaxesPayable" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_IncomeTaxesAbstract" name="IncomeTaxesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CashCashEquivalentsAndShortTermInvestmentTextBlock" name="CashCashEquivalentsAndShortTermInvestmentTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_VestedAndExpectedToVestOutstandingIntrinsicValue" name="VestedAndExpectedToVestOutstandingIntrinsicValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_CashCashEquivalentsAndShortTermInvestmentsTextBlock" name="CashCashEquivalentsAndShortTermInvestmentsTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AcquiredCompanyMember" name="AcquiredCompanyMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_DueToAcquisition" name="DueToAcquisition" type="xbrli:positiveIntegerItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RestructuringPlan2009Member" name="RestructuringPlan2009Member" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_FacilitiesMember" name="FacilitiesMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RestructuringChargesTablesAbstract" name="RestructuringChargesTablesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_EstimatedCostRelatedToInProcessResearchAndDevelopment" name="EstimatedCostRelatedToInProcessResearchAndDevelopment" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_GrossLiabilityForUnrecognizedTaxBenefitsExclusiveOfInterestAndPenalties" name="GrossLiabilityForUnrecognizedTaxBenefitsExclusiveOfInterestAndPenalties" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_AvailableForSaleSecuritiesUnrealizedLossesGross" name="AvailableForSaleSecuritiesUnrealizedLossesGross" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_AmortizedCostMember" name="AmortizedCostMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ScheduleOfAccruedExpensesTextBlock" name="ScheduleOfAccruedExpensesTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ScheduleOfEarningsPerShareTextBlock" name="ScheduleOfEarningsPerShareTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_BusinessAcquisitionLiabilitiesAssumed" name="BusinessAcquisitionLiabilitiesAssumed" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_CostRecorded" name="CostRecorded" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_SegmentsDetailsAbstract" name="SegmentsDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_SegmentReportingNumericAbstract" name="SegmentReportingNumericAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_TwoThousandTwentyNotesMember" name="TwoThousandTwentyNotesMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_CombinedNotesIssuedMember" name="CombinedNotesIssuedMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_TwoThousandFifteenNotesMember" name="TwoThousandFifteenNotesMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_SegmentsAbstract" name="SegmentsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_TenderOfferForAcquisitionOfOutstandingShares" name="TenderOfferForAcquisitionOfOutstandingShares" type="us-types:perShareItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_TotalCapitalCommitmentToLimitedPartnership" name="TotalCapitalCommitmentToLimitedPartnership" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_AmountInvestedTowardsCapitalCommitmentToLimitedPartnership" name="AmountInvestedTowardsCapitalCommitmentToLimitedPartnership" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_DebtDetailsAbstract" name="DebtDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_DebtNumericAbstract" name="DebtNumericAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_PerformanceShareActivity2010ProgramAbstract" name="PerformanceShareActivity2010ProgramAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_Program2010Member" name="Program2010Member" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_MaximumTargetPercentageAllowedUnderProgram" name="MaximumTargetPercentageAllowedUnderProgram" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_DerivativesAndHedgingActivitiesDetailsAbstract" name="DerivativesAndHedgingActivitiesDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_DerivativesAndHedgingActivitiesTablesAbstract" name="DerivativesAndHedgingActivitiesTablesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_BasisOfPresentationAndSummaryOfSignificantAccountingPoliciesPoliciesAbstract" name="BasisOfPresentationAndSummaryOfSignificantAccountingPoliciesPoliciesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_SegmentTablesAbstract" name="SegmentTablesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_NumberOfOfficeBuildings" name="NumberOfOfficeBuildings" type="xbrli:integerItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_LeaseRenewalPeriod" name="LeaseRenewalPeriod" type="xbrli:integerItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RepurchaseNotesAtPriceOfTheirPrincipalAmountPlusAccruedAndUnpaidInterest" name="RepurchaseNotesAtPriceOfTheirPrincipalAmountPlusAccruedAndUnpaidInterest" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_SecuritiesInContinuousUnrealizedLossPositionForMoreThanTwelveMonths" name="SecuritiesInContinuousUnrealizedLossPositionForMoreThanTwelveMonths" type="xbrli:integerItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_SecuritiesInUnrealizedLossPosition" name="SecuritiesInUnrealizedLossPosition" type="xbrli:integerItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_UndistributedForeignEarningsForDeferredTaxLiability" name="UndistributedForeignEarningsForDeferredTaxLiability" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_VestedAndDeferredShares" name="VestedAndDeferredShares" type="xbrli:positiveIntegerItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_VestedAndDeferredOutstandingIntrinsicValue" name="VestedAndDeferredOutstandingIntrinsicValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_VestedAndDeferredWeightedAverageRemainingContractualLife" name="VestedAndDeferredWeightedAverageRemainingContractualLife" type="xbrli:decimalItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" />
+  <element id="adbe_ComprehensiveIncomeLossNetOfTaxesTextBlock" name="ComprehensiveIncomeLossNetOfTaxesTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AssetsAtFairValueOnRecurringBasisAbstract" name="AssetsAtFairValueOnRecurringBasisAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_LiabilitiesAtFairValueOnRecurringBasisAbstract" name="LiabilitiesAtFairValueOnRecurringBasisAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AccruedRestructuringCharges" name="AccruedRestructuringCharges" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_FairValueAssetsMeasuredOnRecurringBasisPrepaidExpensesAndOtherCurrentAssets" name="FairValueAssetsMeasuredOnRecurringBasisPrepaidExpensesAndOtherCurrentAssets" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_FairValueAssetsMeasuredOnRecurringBasisOther" name="FairValueAssetsMeasuredOnRecurringBasisOther" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_FairValueAssetsMeasuredOnRecurringBasisTotal" name="FairValueAssetsMeasuredOnRecurringBasisTotal" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_FairValueLiabilitiesMeasuredOnRecurringBasisOtherCurrentLiabilities" name="FairValueLiabilitiesMeasuredOnRecurringBasisOtherCurrentLiabilities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_FairValueLiabilitiesMeasuredOnRecurringBasisTotal" name="FairValueLiabilitiesMeasuredOnRecurringBasisTotal" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_AmortizedCostAndEstimatedFairValueOfDebtSecuritiesAbstract" name="AmortizedCostAndEstimatedFairValueOfDebtSecuritiesAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_DueWithInTwoYearsAmortizedCost" name="DueWithInTwoYearsAmortizedCost" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_DueWithInThreeYearsAmortizedCost" name="DueWithInThreeYearsAmortizedCost" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_DueAfterThreeYearsAmortizedCost" name="DueAfterThreeYearsAmortizedCost" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_TimeDepositsFairValue" name="TimeDepositsFairValue" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_UnitedStatesTreasurySecurities" name="UnitedStatesTreasurySecurities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_UnitedStatesAgencySecurities" name="UnitedStatesAgencySecurities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_MunicipalSecurities" name="MunicipalSecurities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_ForeignGovernmentSecurities" name="ForeignGovernmentSecurities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_MarketableEquitySecurities" name="MarketableEquitySecurities" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="debit" />
+  <element id="adbe_CostOfRevenueSubscription" name="CostOfRevenueSubscription" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="debit" />
+  <element id="adbe_AveragePurchasePriceOfSharesUnderEmployeeStockPurchasePlan" name="AveragePurchasePriceOfSharesUnderEmployeeStockPurchasePlan" type="us-types:perShareItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_StockBasedCompensationNumericAbstract" name="StockBasedCompensationNumericAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_StockOptionsOutstandingAbstract" name="StockOptionsOutstandingAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_StockholdersEquityDetailsAbstract" name="StockholdersEquityDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AdjustmentsRelatedToChangesToPreviousEstimates" name="AdjustmentsRelatedToChangesToPreviousEstimates" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" xbrli:balance="credit" />
+  <element id="adbe_ProgramOneMember" name="ProgramOneMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_ProgramTwoMember" name="ProgramTwoMember" type="us-types:domainItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_SubsequentEventsAbstract" name="SubsequentEventsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_SubsequentEventsDetailsAbstract" name="SubsequentEventsDetailsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_SubsequentEventsTextualsAbstract" name="SubsequentEventsTextualsAbstract" abstract="true" type="xbrli:stringItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AssumptionsUsedToValueEmployeeStockPurchaseRightsTextBlock" name="AssumptionsUsedToValueEmployeeStockPurchaseRightsTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_PerformanceSharesOutstandingTextBlock" name="PerformanceSharesOutstandingTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_SignificantAccountingPolicyTextBlock" name="SignificantAccountingPolicyTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_VacatedFacilities" name="VacatedFacilities" type="xbrli:integerItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_AccruedRestructuringCurrent" name="AccruedRestructuringCurrent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_AccruedRestructuringNoncurrent" name="AccruedRestructuringNoncurrent" type="xbrli:monetaryItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="instant" xbrli:balance="credit" />
+  <element id="adbe_PercentageOfFacilitiesRelatedLiabilitiesExpectedToBePaidThroughFutureYear" name="PercentageOfFacilitiesRelatedLiabilitiesExpectedToBePaidThroughFutureYear" type="us-types:percentItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+  <element id="adbe_RetainedEarningsTextBlock" name="RetainedEarningsTextBlock" type="us-types:textBlockItemType" substitutionGroup="xbrli:item" nillable="true" xbrli:periodType="duration" />
+</schema>

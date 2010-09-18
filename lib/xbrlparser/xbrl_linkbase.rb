@@ -12,6 +12,73 @@ module XBRL
       end
     end
     
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.1.3
+    module RoleType
+      include Hacksaw::XML::Element
+
+      # The roleURI attribute MUST occur and MUST contain the role value being defined. 
+      # When the custom role type is used, the xlink:role attribute value matches the value of the roleURI.
+      def roleURI_attr
+        attr('roleURI')
+      end
+      
+      def definition_tags
+        extend_children_with_tag(NS_LINK, 'definition', Definition)
+      end
+
+      def usedOn_tags
+        extend_children_with_tag(NS_LINK, 'usedOn', UsedOn)
+      end
+    end
+    
+    module Definition
+      include Hacksaw::XML::Element
+      
+      # The content of a definition element MUST be a string giving meaning to the role type.
+      def to_s
+        content
+      end
+    end
+    
+    # The roleType element MAY contain one or more usedOn elements.
+    # The usedOn element identifies which elements MAY use the role type being defined.
+    module UsedOn
+      include Hacksaw::XML::Element
+
+      # The usedOn element has a type of QName, so it must be some form of qualified or unqualified name.
+      def to_s
+        content
+      end
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.1.4
+    module ArcroleType
+      include Hacksaw::XML::Element
+      
+      # The arcroleURI attribute MUST occur and MUST contain the arc role value being defined.
+      # When the defined arc role type is used, the xlink:arcrole attribute value matches the value of the arcroleURI.
+      def arcroleURI_attr
+        attr('arcroleURI')
+      end
+      
+      # The arcroleType element MUST have a cyclesAllowed attribute that identifies the type of cycles
+      # that are allowed in a network of relationships as defined in Section 3.5.3.9.7.3.
+      def cyclesAllowed_attr
+        attr('cyclesAllowed')
+      end
+      
+      # The arcroleType element MAY contain a definition element.
+      # The definition element MUST contain a string giving human-readable meaning to the arc role type.
+      def definition_tags
+        extend_children_with_tag(NS_LINK, 'definition', Definition)
+      end
+
+      # The arcroleType element MAY contain one or more usedOn elements.
+      def usedOn_tags
+        extend_children_with_tag(NS_LINK, 'usedOn', UsedOn)
+      end
+    end
+    
     module RoleRef
       include ::XBRL::XLink::SimpleLink
       
@@ -25,8 +92,8 @@ module XBRL
       # element. The value of this attribute MUST match the value of the roleURI attribute on the
       # roleType element that the roleRef element is pointing to.  Within a linkbase or an XBRL 
       # instance there MUST NOT be more than one roleRef element with the same roleURI attribute value.
-      def roleURI
-        qattr(NS_LINK, 'roleURI')
+      def roleURI_attr
+        attr('roleURI')
       end
     end
   
@@ -44,8 +111,8 @@ module XBRL
       # of the arcroleURI attribute on the arcroleType element that the arcroleRef element is 
       # pointing to.  Within a linkbase or an XBRL instance there MUST NOT be more than one arcroleRef 
       # element with the same arcroleURI attribute value.
-      def arcroleURI
-        qattr(NS_LINK, 'arcroleURI')
+      def arcroleURI_attr
+        attr('arcroleURI')
       end
     end
     
@@ -72,20 +139,20 @@ module XBRL
     def dts
     end
   
-    def documentation
+    def documentation_tags
       extend_children_with_tag(NS_LINK, 'documentation', Documentation)
     end
   
-    def roleRefs
+    def roleRef_tags
       extend_children_with_tag(NS_LINK, 'roleRef', RoleRef)
     end
 
-    def arcroleRefs
+    def arcroleRef_tags
       extend_children_with_tag(NS_LINK, 'arcroleRef', ArcroleRef)
     end
     
-    def extended_links
-      extend_children_with_attr(NS_XL, 'type', 'extended', ::XBRL::XLink::ExtendedLink)
+    def extended_link_tags
+      extend_children_with_qattr(NS_XL, 'type', 'extended', ::XBRL::XLink::ExtendedLink)
     end
   end
 end
