@@ -29,9 +29,17 @@ module XBRL
     end
     
     def items
+      # 1. Identify taxonomies in DTS
+      # 2. Enumerate element definitions in each of the taxonomies (from DTS) that belong to the xbrli:item substitution group.
+      # 3. Scan this instance document for any element conforming to the element definitions identified in step 2.
+      # 4. Return the list from step 3.
     end
     
     def tuples
+      # 1. Identify taxonomies in DTS
+      # 2. Enumerate element definitions in each of the taxonomies (from DTS) that belong to the xbrli:tuple substitution group.
+      # 3. Scan this instance document for any element conforming to the element definitions identified in step 2.
+      # 4. Return the list from step 3.
     end
 
     # schemaRef elements
