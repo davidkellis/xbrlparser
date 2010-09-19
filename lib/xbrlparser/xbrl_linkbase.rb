@@ -150,6 +150,81 @@ module XBRL
       include XBRL::XLink::Arc
     end
     
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.4
+    module PresentationLink
+      include XBRL::XLink::ExtendedLink
+
+      def documentation_tags
+        extend_children_with_tag(NS_LINK, 'documentation', Documentation)
+      end
+    
+      def loc_tags
+        extend_children_with_tag(NS_LINK, 'loc', Loc)
+      end
+  
+      def presentationArc_tags
+        extend_children_with_tag(NS_LINK, 'presentationArc', PresentationArc)
+      end
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.4.2
+    module PresentationArc
+      include XBRL::XLink::Arc
+      
+      def preferredLabel_attr
+        attr('preferredLabel')
+      end
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.5
+    module CalculationLink
+      include XBRL::XLink::ExtendedLink
+      
+      def documentation_tags
+        extend_children_with_tag(NS_LINK, 'documentation', Documentation)
+      end
+    
+      def loc_tags
+        extend_children_with_tag(NS_LINK, 'loc', Loc)
+      end
+  
+      def calculationArc_tags
+        extend_children_with_tag(NS_LINK, 'calculationArc', CalculationArc)
+      end
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.5.2
+    module CalculationArc
+      include XBRL::XLink::Arc
+      
+      # The weight attribute MUST appear on calculationArc elements. The weight attribute MUST have a non-zero decimal value.
+      def weight_attr
+        attr('weight')
+      end
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.6
+    module DefinitionLink
+      include XBRL::XLink::ExtendedLink
+      
+      def documentation_tags
+        extend_children_with_tag(NS_LINK, 'documentation', Documentation)
+      end
+    
+      def loc_tags
+        extend_children_with_tag(NS_LINK, 'loc', Loc)
+      end
+  
+      def definitionArc_tags
+        extend_children_with_tag(NS_LINK, 'definitionArc', DefinitionArc)
+      end
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.6.2
+    module DefinitionArc
+      include XBRL::XLink::Arc
+    end
+    
     
     module RoleRef
       include ::XBRL::XLink::SimpleLink
