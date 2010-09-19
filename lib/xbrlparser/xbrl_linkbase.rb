@@ -79,6 +79,50 @@ module XBRL
       end
     end
     
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.2
+    module LabelLink
+      include XBRL::XLink::ExtendedLink
+      
+      def title_tags
+        extend_children_with_qattr(NS_XL, 'type', 'title', Title)
+      end
+
+      def documentation_tags
+        extend_children_with_tag(NS_LINK, 'documentation', Documentation)
+      end
+    
+      def loc_tags
+        extend_children_with_tag(NS_LINK, 'loc', Loc)
+      end
+  
+      def labelArc_tags
+        extend_children_with_tag(NS_LINK, 'labelArc', LabelArc)
+      end
+      
+      def label_tags
+        extend_children_with_tag(NS_LINK, 'label', Label)
+      end
+    end
+
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_3.5.3.7
+    module Loc
+      include XBRL::XLink::Locator
+    end
+
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.2.2
+    module Label
+      include XBRL::XLink::Resource
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.2.3
+    module LabelArc
+      include XBRL::XLink::Arc
+    end
+    
+    # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.2.3
+    module ReferenceLink
+    end
+    
     module RoleRef
       include ::XBRL::XLink::SimpleLink
       
@@ -152,7 +196,8 @@ module XBRL
     end
     
     def extended_link_tags
-      extend_children_with_qattr(NS_XL, 'type', 'extended', ::XBRL::XLink::ExtendedLink)
+      elements_in_substitution_group('extended', NS_LINK)
+      # extend_children_with_qattr(NS_XL, 'type', 'extended', ::XBRL::XLink::ExtendedLink)
     end
   end
 end

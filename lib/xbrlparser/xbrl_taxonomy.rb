@@ -32,6 +32,16 @@ module XBRL
       end.flatten
     end
     
+    def linkbase_tags
+      attribute_tags.map do |attr_tag|
+        attr_tag.annotation_tags.map do |anno_tag|
+          anno_tag.appInfo_tags.map do |appinfo|
+            appinfo.extend_children_with_tag(NS_LINK, 'linkbase', ::XBRL::Linkbase)
+          end
+        end
+      end.flatten
+    end
+    
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.1.3
     def roleType_tags
       attribute_tags.map do |attr_tag|
@@ -73,11 +83,11 @@ module XBRL
     end
 
     def item_elements
-      elements_in_substitution_group('item', 'http://www.xbrl.org/2003/instance')
+      elements_in_substitution_group('item', NS_XBRLI)
     end
     
     def tuple_elements
-      elements_in_substitution_group('tuple', 'http://www.xbrl.org/2003/instance')
+      elements_in_substitution_group('tuple', NS_XBRLI)
     end
   end
 end
