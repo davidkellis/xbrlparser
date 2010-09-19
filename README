@@ -1,1 +1,5 @@
-xbrlparser is a library used to parse XBRL instance documents.
+xbrlparser is a library used to parse XBRL instance and taxonomy documents.
+
+This library is similar in nature to xbrlware.
+
+Licensed under the MIT license.
