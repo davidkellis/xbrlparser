@@ -2,9 +2,9 @@
 module XBRL
   module Taxonomy
     include Hacksaw::XML::Schema
-    
+
     NS_US_GAAP_2009 = "http://xbrl.us/us-gaap/2009-01-31"
-    
+
     module TaxonomyElement
       include Hacksaw::XML::SchemaElement
       
@@ -19,7 +19,22 @@ module XBRL
         qattr(NS_XBRLI, 'balance')
       end
     end
-    
+
+    def dts
+    end
+
+    def linkbases
+      linkbase_leiris = linkbaseRef_tags.map{|n| n.xlink_href }
+      referenced_linkbases = linkbase_leiris.map do |leiri|
+        doc = leiri.read
+        XBRL::Linkbase.load_document(doc, leiri.to_s)
+      end
+      
+      embedded_linkbases = linkbase_tags
+      
+      referenced_linkbases + embedded_linkbases
+    end
+
     # The linkbaseRef element MAY be placed among the set of nodes identified by
     # the XPath [XPATH] path "//xsd:schema/xsd:annotation/xsd:appinfo/*" in a taxonomy schema.
     def linkbaseRef_tags
@@ -31,7 +46,7 @@ module XBRL
         end
       end.flatten
     end
-    
+
     def linkbase_tags
       attribute_tags.map do |attr_tag|
         attr_tag.annotation_tags.map do |anno_tag|
@@ -41,7 +56,7 @@ module XBRL
         end
       end.flatten
     end
-    
+
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_5.1.3
     def roleType_tags
       attribute_tags.map do |attr_tag|

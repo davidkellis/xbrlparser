@@ -17,15 +17,53 @@ module XBRL
     include Hacksaw::XML::Element
     
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_3.2
-    # determine the DTS that supports this XBRL Instance document
-    def dts
-      taxonomies + linkbases
+    # Determine the taxonomy schemas in the DTS.
+    def dts_taxonomies
+      direct_taxonomies = taxonomies()
+      
+      import_and_include_leiris = direct_taxonomies.map do |tax|
+        tax.import_tags.map {|imp| imp.schema_location_uri } + tax.include_tags.map {|inc| inc.schema_location_uri }
+      end
+      
+      imported_or_included_taxonomies = import_and_include_leiris.map {|leiri| XBRL::Taxonomy.load_document(leiri.read, leiri.to_s) }
     end
     
+    # Determine the linkbase documents in the DTS.
+    def dts_linkbases
+    end
+    
+    # Taxonomy schemas in the DTS are those:
+    # 1. referenced directly from an XBRL instance using the schemaRef, roleRef, arcroleRef or linkbaseRef element.
+    #    The xlink:href attribute on the schemaRef, roleRef, arcroleRef or linkbaseRef element contains the URL of 
+    #    the taxonomy schema that is discovered. Every taxonomy schema that is referenced by the schemaRef, roleRef,
+    #    arcroleRef or linkbaseRef element MUST be discovered.
+    #
+    # NOTE (DKE): I believe the preceeding description is incorrect. linkbaseRef elements are supposed to reference
+    #             a linkbase document. http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.3.2
+    #             says "A linkbaseRef element MUST have an xlink:href attribute. The xlink:href attribute MUST be a URI. 
+    #             The URI MUST point to a linkbase (as defined in Section 3.5.2)..."
+    #
+    # This method only returns the taxonomies that are directly linked to from this instance document.
     def taxonomies
+      schema_leiris = (schemaRef_tags + roleRef_tags + arcroleRef_tags).map{|n| n.xlink_href }
+      schema_leiris.map do |leiri|
+        doc = leiri.read
+        XBRL::Taxonomy.load_document(doc, leiri.to_s)
+      end
     end
     
+    # Linkbase documents in the DTS are those:
+    # 1. referenced directly from an XBRL instance via the linkbaseRef element.
+    #    The xlink:href attribute contains the URL of the linkbase document being discovered. Every linkbase that is
+    #    referenced by the linkbaseRef element MUST be discovered.
+    #
+    # This method only returns the linkbases that are directly linked to from this instance document.
     def linkbases
+      linkbase_leiris = linkbaseRef_tags.map{|n| n.xlink_href }
+      linkbase_leiris.map do |leiri|
+        doc = leiri.read
+        XBRL::Linkbase.load_document(doc, leiri.to_s)
+      end
     end
     
     def items
@@ -53,7 +91,7 @@ module XBRL
     def schemaRef_tags
       extend_children_with_tag(NS_LINK, 'schemaRef', ::XBRL::Linkbase::SchemaRef)
     end
-  
+
     # linkbaseRef elements
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.3
     # One or more linkbaseRef elements MAY occur as children of the xbrl element (They MAY also occur in taxonomy schemas.
@@ -64,7 +102,7 @@ module XBRL
     def linkbaseRef_tags
       extend_children_with_tag(NS_LINK, 'linkbaseRef', ::XBRL::Linkbase::LinkbaseRef)
     end
-  
+
     # roleRef elements
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.4
     # roleRef elements are used in XBRL instances to reference the definitions of any custom xlink:role attribute
@@ -72,7 +110,7 @@ module XBRL
     def roleRef_tags
       extend_children_with_tag(NS_LINK, 'roleRef', ::XBRL::Linkbase::RoleRef)
     end
-    
+
     # arcroleRef elements
     # http://www.xbrl.org/Specification/XBRL-RECOMMENDATION-2003-12-31+Corrected-Errata-2008-07-02.htm#_4.5
     # arcroleRef elements are used in XBRL instances to reference the definitions of any custom xlink:arcrole attribute
